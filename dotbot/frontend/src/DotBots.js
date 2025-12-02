@@ -8,6 +8,8 @@ import { SailBotItem } from "./SailBotItem";
 import { SailBotsMap } from "./SailBotsMap";
 import { XGOItem } from "./XGOItem";
 import { ApplicationType, inactiveAddress, maxWaypoints, maxPositionHistory } from "./utils/constants";
+import { computeOrcaVelocityForAgent } from "./utils/orca.tsx";
+import { mul } from "./utils/vec2.tsx";
 
 
 const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
@@ -33,19 +35,7 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
     }
   };
 
-  const mapClicked = useCallback((x, y) => {
-    if (!dotbots || dotbots.length === 0) {
-      return;
-    }
-
-    const activeDotbots = dotbots.filter(dotbot => activeDotbot === dotbot.address);
-    // Do nothing if no active dotbot
-    if (activeDotbots.length === 0) {
-      return;
-    }
-
-    const dotbot = activeDotbots[0];
-
+  const insertWaypoint = useCallback((x, y, dotbot) => {
     // Limit number of waypoints to maxWaypoints
     if (dotbot.waypoints.length >= maxWaypoints) {
       return;
@@ -82,7 +72,24 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
         }
       }
     }
-  }, [activeDotbot, dotbots, updateDotbots]
+  }, [dotbots, updateDotbots]
+  );
+
+
+  const mapClicked = useCallback((x, y) => {
+    if (!dotbots || dotbots.length === 0) {
+      return;
+    }
+
+    const activeDotbots = dotbots.filter(dotbot => activeDotbot === dotbot.address);
+    // Do nothing if no active dotbot
+    if (activeDotbots.length === 0) {
+      return;
+    }
+
+    const dotbot = activeDotbots[0];
+    insertWaypoint(x, y, dotbot);
+  }, [activeDotbot, dotbots, insertWaypoint]
   );
 
   const applyWaypoints = useCallback(async (address, application) => {
@@ -317,9 +324,99 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
       }
       </>
       )}
+      <div><button onClick={() => runOrcaStepWithState(dotbots, insertWaypoint, publishCommand, clearWaypoints)}>RUNONE</button></div>
     </div>
     </>
   );
 }
+
+function directionToRad(direction) {
+  const robotDeg = (270 - direction + 360) % 360;
+  return (robotDeg * Math.PI) / 180;
+}
+
+function preferredVel(dotbot) {
+  // TODO: get goal from dotbot state
+  let bot = {
+    goal: { x: 0, y: 0 }
+  }
+
+  const dx = bot.goal.x - dotbot.lh2_position.x;
+  const dy = bot.goal.y - dotbot.lh2_position.y;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+
+  let preferred_vel;
+  if (dist < 0.01) {
+    preferred_vel = { x: 0, y: 0 };
+  } else {
+    const maxSpeed = 1.0;
+    // Add small rotation bias to break symmetry (Right Hand Rule)
+    const biasAngle = 0.2;
+    const cos = Math.cos(biasAngle);
+    const sin = Math.sin(biasAngle);
+
+    const vx = (dx / dist) * maxSpeed;
+    const vy = (dy / dist) * maxSpeed;
+
+    return preferred_vel = {
+      x: vx * cos - vy * sin,
+      y: vx * sin + vy * cos,
+    }
+  }
+}
+
+async function runOrcaStepWithState (currentDotbots, insertWaypoint, publishCommand, clearWaypoints) {
+  const botRadius = 0.015;
+
+  // for (let i = 0; i < 10; i++) {
+    // Process each bot that has a goal
+  for (const bot of currentDotbots) {
+    const agent = {
+      id: bot.address,
+      position: { x: bot.lh2_position.x, y: bot.lh2_position.y },
+      velocity: { x: 0, y: 0 },
+      radius: botRadius,
+      maxSpeed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
+      preferredVelocity: preferredVel(bot),
+    };
+
+    // Create neighbors list (all other bots)
+    const neighbors = [];
+    for (const otherBot of currentDotbots) {
+      if (otherBot.address === bot.address) continue; // Skip self
+
+      neighbors.push({
+        id: otherBot.address,
+        position: { x: otherBot.lh2_position.x, y: otherBot.lh2_position.y },
+        velocity: { x: 0, y: 0 },
+        radius: botRadius,
+        maxSpeed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
+        preferredVelocity: preferredVel(otherBot) ?? { x: 0, y: 0 },
+      });
+    }
+
+    const params = { timeHorizon: 0.03 };
+
+    // Compute ORCA velocity toward the goal
+    let vNew = computeOrcaVelocityForAgent(agent, neighbors, params);
+    vNew = mul(vNew, 0.1); // Scale down velocity for smoother movement
+
+    console.log(`Bot ${bot.address} bot.lh2_position:`, bot.lh2_position);
+    console.log(`Bot ${bot.address} vNew:`, vNew);
+
+    insertWaypoint(bot.lh2_position.x + vNew.x, bot.lh2_position.y + vNew.y, bot);
+
+    publishCommand(bot.address, bot.application, "waypoints", { threshold: bot.waypoints_threshold, waypoints: bot.waypoints });
+
+  }
+
+  await new Promise(r => setTimeout(r, 1000));
+
+
+  for (const bot of currentDotbots) {
+    clearWaypoints(bot.address, bot.application);
+  }
+  // }
+};
 
 export default DotBots;
