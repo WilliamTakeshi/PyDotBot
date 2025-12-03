@@ -424,15 +424,25 @@ function preferredVel(dotbot) {
     const maxSpeed = 0.5;
     // Add small rotation bias to break symmetry (Right Hand Rule)
     const biasAngle = 0.2;
-    const cos = Math.cos(biasAngle);
-    const sin = Math.sin(biasAngle);
+    const MAX_DEVIATION = (45 * Math.PI) / 180; // 45 degrees in radians
+    const direction = directionToRad(dotbot.direction);
+    // Angle from bot to goal in world frame
+    let angleToGoal = Math.atan2(dy, dx) + biasAngle;
 
-    const vx = (dx / dist) * maxSpeed;
-    const vy = (dy / dist) * maxSpeed;
+    let delta = angleToGoal - direction;
+    // Wrap into [-π, π]
+    delta = Math.atan2(Math.sin(delta), Math.cos(delta));
 
-    preferred_vel = {
-      x: vx * cos - vy * sin,
-      y: vx * sin + vy * cos,
+    // Clamp to [-30°, +30°]
+    if (delta > MAX_DEVIATION) delta = MAX_DEVIATION;
+    if (delta < -MAX_DEVIATION) delta = -MAX_DEVIATION;
+
+    // Final allowed direction in world frame
+    const finalAngle = direction + delta;
+
+    preferred_vel =  {
+      x: Math.cos(finalAngle) * maxSpeed,
+      y: Math.sin(finalAngle) * maxSpeed,
     };
   }
 
@@ -440,5 +450,10 @@ function preferredVel(dotbot) {
 }
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+function directionToRad(direction) {
+  const rad = ((direction + 90) * Math.PI) / 180;
+  return Math.atan2(Math.sin(rad), Math.cos(rad)); // normalize
+}
 
 export default DotBots;
