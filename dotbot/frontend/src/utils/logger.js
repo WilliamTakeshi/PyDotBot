@@ -11,7 +11,7 @@ const logger = pino({
   browser: {
     asObject: true,
     write: (o) => {
-        console.log(`${o.time} - %c ${levelToLabel(o.level).label}%c${o.module ? " - " + o.module: ""} - ${o.msg}`, levelToLabel(o.level).style, "color:white");
+        // console.log(`${o.time} - %c ${levelToLabel(o.level).label}%c${o.module ? " - " + o.module: ""} - ${o.msg}`, levelToLabel(o.level).style, "color:white");
     }
   },
   level: process.env.REACT_APP_LOG_LEVEL || 'info',
