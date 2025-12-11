@@ -226,12 +226,8 @@ def compute_orca_velocity_for_agent(
     neighbors: List[Agent],
     params: OrcaParams
 ) -> Vec2:
-    print("Computing ORCA velocity for agent:", agent.id)
     lines = compute_orca_lines_for_agent(agent, neighbors, params)
-    print("FINISH:", agent.id)
-    print("FINISH:", lines)
     result = solve_orca_velocity(agent.preferred_velocity, agent.max_speed, lines)
-    print("RESULT:", result)
     return result
 
 

@@ -18,6 +18,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from dotbot import pydotbot_version
 from dotbot.logger import LOGGER
 from dotbot.models import (
+    DotBotLH2Position,
     DotBotModel,
     DotBotMoveRawCommandModel,
     DotBotNotificationCommand,
@@ -242,12 +243,34 @@ async def websocket_endpoint(websocket: WebSocket):
     path="/controller/dotbots/compute_orca_velocity",
     tags=["dotbots"],
 )
-async def dotbots_waypoints(
+async def compute_orca_velocity(
     agent: Agent,
     neighbors: List[Agent],
+    params: OrcaParams,
 ) -> Vec2:
-    params = OrcaParams(time_horizon=0.2)
     return compute_orca_velocity_for_agent(agent, neighbors, params)
+
+
+@api.post(
+    path="/controller/dotbots/run_test",
+)
+async def run_test(
+    params: OrcaParams,
+    agents: List[Agent],
+) -> Vec2:
+    # params = OrcaParams(time_horizon=0.2)
+    for agent in agents:
+        neighbors = [neighbor for neighbor in agents if neighbor.id != agent.id]
+
+
+        orca_vel = await compute_orca_velocity(agent, neighbors=neighbors, params=params)
+        orca_vel = Vec2(x=orca_vel.x * 0.15, y=orca_vel.y * 0.15)
+
+        waypoints = DotBotWaypoints(threshold=40, waypoints=[DotBotLH2Position(x=agent.position.x + orca_vel.x, y=agent.position.y + orca_vel.y, z=0)])
+        # POST waypoint
+        await dotbots_waypoints(address=agent.id, application=0, waypoints=waypoints)
+
+    return orca_vel
 
 # Mount static files after all routes are defined
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend", "build")

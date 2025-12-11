@@ -42,9 +42,6 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
   const runOrcaStepWithState = useCallback(async () => {
     const currentDotbots = dotbotsRef.current;
 
-    console.log("runOrcaStepWithState called");
-    // console.log("dotbots[0]", dotbots[0]);
-    console.log("dotbots[0]", currentDotbots[0].lh2_position);
     const botRadius = 0.02;
     let waypointsList = [];
 
@@ -74,7 +71,7 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
         });
       }
 
-      const params = { timeHorizon: 0.2 };
+      const params = { time_horizon: 0.2 };
 
       // Compute ORCA velocity toward the goal
       // let vNew = computeOrcaVelocityForAgent(agent, neighbors, params);
@@ -86,20 +83,16 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ agent: agent, neighbors: neighbors }),
+        body: JSON.stringify({ agent: agent, neighbors: neighbors, params: params }),
       });
       if (!orcaVel.ok) {
-        throw new Error(`PUT failed ${resp.status}: ${await resp.text()}`);
+        throw new Error(`PUT failed ${orcaVel.status}: ${await orcaVel.text()}`);
       }
 
       let vNew = await orcaVel.json();
 
       vNew = {x: vNew.x * 0.15, y: vNew.y * 0.15};
 
-      waypointsList.push({ x: bot.lh2_position.x + vNew.x, y: bot.lh2_position.y + vNew.y, address: bot.address });
-      // publishCommand(bot.address, bot.application, "waypoints", { threshold: bot.waypoints_threshold, waypoints: [{x: bot.lh2_position.x + vNew.x, y: bot.lh2_position.y + vNew.y, z:0}] });
-      // /controller/dotbots/{address}/{application}/waypoints
-      console.log("Publishing to bot", bot.address, bot.application);
       const url = `${baseUrl}/controller/dotbots/${bot.address}/${bot.application}/waypoints`;
 
       const resp = await fetch(url, {
@@ -113,8 +106,49 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
         throw new Error(`PUT failed ${resp.status}: ${await resp.text()}`);
       }
 
-      console.log("resp.json()", resp.json());
+    }
+  }, [
+    publishCommand,
+]);
 
+  const runTest = useCallback(async () => {
+    console.log("runTest");
+    const currentDotbots = dotbotsRef.current;
+
+    const botRadius = 0.02;
+    let waypointsList = [];
+
+    // Create all agents list
+    const agents = [];
+    for (const bot of currentDotbots) {
+      agents.push({
+        id: bot.address,
+        position: { x: bot.lh2_position.x, y: bot.lh2_position.y },
+        velocity: { x: 0, y: 0 },
+        radius: botRadius,
+        max_speed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
+        preferred_velocity: preferredVel(bot) ?? { x: 0, y: 0 },
+      });
+    }
+
+    console.log("agents: ", agents);
+
+    const orca_params = { time_horizon: 0.2 };
+
+    // Compute ORCA velocity toward the goal
+    // let vNew = computeOrcaVelocityForAgent(agent, neighbors, params);
+    let baseUrl = "http://localhost:8000";
+
+
+    let orcaVel = await fetch(`${baseUrl}/controller/dotbots/run_test`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ params: orca_params, agents: agents}),
+    });
+    if (!orcaVel.ok) {
+      throw new Error(`PUT failed ${orcaVel.status}: ${await orcaVel.text()}`);
     }
   }, [
     publishCommand,
@@ -427,6 +461,7 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
       </>
       )}
       <div><button onClick={() => runOrcaStepWithState()}>One Step</button></div>
+      <div><button onClick={() => runTest()}>Run test</button></div>
       <div><button onClick={handleClick}>{running ? "stop" : "run"}</button></div>
     </div>
     </>
