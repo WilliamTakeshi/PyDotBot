@@ -5,9 +5,10 @@
 
 """Module for the web server application."""
 
+import asyncio
 import os
 import traceback
-from typing import List
+from typing import Dict, List
 
 import httpx
 from fastapi import Depends, FastAPI, HTTPException, Request, WebSocket, WebSocketDisconnect
@@ -275,55 +276,82 @@ async def run_test(
         application=ApplicationType.DotBot,
         status=DotBotStatus.ACTIVE
     )
-
-    goals = {
-        "badcafe111111111": {"x": 0.8, "y": 0.8},
-        "deadbeef22222222": {"x": 0.8, "y": 0.2},
-        "b0b0f00d33333333": {"x": 0.2, "y": 0.8},
-        "badc0de444444444": {"x": 0.2, "y": 0.2},
-        # "a4f3a52f628a57c5": {"x": 0.2, "y": 0.2},
-        # "7f286159a96bebb2": {"x": 0.8, "y": 0.8},
-    }
-
     dotbots: List[DotBotModel] = api.controller.get_dotbots(query)
+
+    # Define the 
+    goals = assign_goals(dotbots)
+
     bot_radius = 0.02
-    agents = []
-    for bot in dotbots:
-        agents.append(
-            Agent(
-                id = bot.address,
-                position=Vec2(x=bot.lh2_position.x, y=bot.lh2_position.y),
-                velocity=Vec2(x=0, y=0),
-                radius=bot_radius,
-                direction=bot.direction, 
-                max_speed=1.0, # Must match the maxSpeed used in preferred_vel calculation
-                # preferred_velocity=Vec2(x=0,y=0),
-                preferred_velocity=preferred_vel(dotbot=bot, goal=goals.get(bot.address)),
+    dt = 0.10
+
+    while True:
+        dotbots: List[DotBotModel] = api.controller.get_dotbots(query)
+        agents: List[Agent] = []
+
+        for bot in dotbots:
+            agents.append(
+                Agent(
+                    id = bot.address,
+                    position=Vec2(x=bot.lh2_position.x, y=bot.lh2_position.y),
+                    velocity=Vec2(x=0, y=0),
+                    radius=bot_radius,
+                    direction=bot.direction, 
+                    max_speed=1.0, # Must match the maxSpeed used in preferred_vel calculation
+                    preferred_velocity=preferred_vel(dotbot=bot, goal=goals.get(bot.address)),
+                )
             )
-        )
+
+        all_done = all(a.preferred_velocity.x == 0 and a.preferred_velocity.y == 0 for a in agents)
+        if all_done:
+            break
+        for agent in agents:
+            neighbors = [neighbor for neighbor in agents if neighbor.id != agent.id]
 
 
-    # for agent in agents:
-    #     goal = goals.get(agent.id)
-    #     agent.preferred_velocity = preferred_vel(agent, goal)
+            orca_vel = await compute_orca_velocity(agent, neighbors=neighbors, params=params)
+            orca_vel = Vec2(x=orca_vel.x * 0.15, y=orca_vel.y * 0.15)
 
-    for agent in agents:
-        neighbors = [neighbor for neighbor in agents if neighbor.id != agent.id]
+            waypoints = DotBotWaypoints(threshold=20, waypoints=[DotBotLH2Position(x=agent.position.x + orca_vel.x, y=agent.position.y + orca_vel.y, z=0)])
+            # POST waypoint
+            await dotbots_waypoints(address=agent.id, application=0, waypoints=waypoints)
+        await asyncio.sleep(dt)
+    return Vec2(x=0, y=0)
 
+def assign_goals(dotbots: List[DotBotModel]) -> Dict[str, dict]:
+    """
+    Assign goals based on distance to the base goal (0.2, 0.2):
+    - Closest bot gets (0.2, 0.2)
+    - Next gets (0.2, 0.3)
+    - Next gets (0.2, 0.4)
+    - etc.
+    """
 
-        orca_vel = await compute_orca_velocity(agent, neighbors=neighbors, params=params)
-        orca_vel = Vec2(x=orca_vel.x * 0.15, y=orca_vel.y * 0.15)
+    (base_x, base_y) = (0.2, 0.4)
+    spacing = 0.1  # distance between goal rows
 
-        waypoints = DotBotWaypoints(threshold=40, waypoints=[DotBotLH2Position(x=agent.position.x + orca_vel.x, y=agent.position.y + orca_vel.y, z=0)])
-        # POST waypoint
-        await dotbots_waypoints(address=agent.id, application=0, waypoints=waypoints)
+    # --- Compute distance of each bot to (base_x, base_y) ---
+    bots_with_dist = []
+    for bot in dotbots:
+        dx = bot.lh2_position.x - base_x
+        dy = bot.lh2_position.y - base_y
+        dist = (dx*dx + dy*dy) ** 0.5
+        bots_with_dist.append((dist, bot))
 
-    return orca_vel
+    # --- Sort by distance ascending ---
+    bots_with_dist.sort(key=lambda item: item[0])
+
+    # --- Assign goals in sorted order ---
+    goals = {}
+    for idx, (_, bot) in enumerate(bots_with_dist):
+        goals[bot.address] = {
+            "x": base_x,
+            "y": base_y + idx * spacing,
+        }
+
+    return goals
 
 
 def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
-    print(dotbot)
-    print(goal)
     if goal is None:
         return Vec2(x=0, y=0)
 
@@ -332,10 +360,11 @@ def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
     dist = math.sqrt(dx*dx + dy*dy)
 
     # If close to goal, stop
-    if dist < 0.1:
+    if dist < 0.02:
         return Vec2(x=0, y=0)
 
-    max_speed = 0.75
+    max_speed = 0.75 if dist >= 0.1 else 0.75 * (dist / 0.1)
+
 
     # Right-hand rule bias
     bias_angle = 0.2

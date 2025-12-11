@@ -147,7 +147,7 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ params: orca_params, agents: agents}),
+      body: JSON.stringify(orca_params),
     });
     if (!orcaVel.ok) {
       throw new Error(`PUT failed ${orcaVel.status}: ${await orcaVel.text()}`);
