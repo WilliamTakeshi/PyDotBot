@@ -315,6 +315,27 @@ async def run_test(
             # POST waypoint
             await dotbots_waypoints(address=agent.id, application=0, waypoints=waypoints)
         await asyncio.sleep(dt)
+
+    TARGET_DIR = 180
+    TOLERANCE = 10  # degrees
+
+
+    while True:
+        all_near_target = True
+
+        dotbots: List[DotBotModel] = api.controller.get_dotbots(query)
+        for dotbot in dotbots:
+            if abs(dotbot.direction - TARGET_DIR) < TOLERANCE:
+                await dotbots_move_raw(address=dotbot.address, application=0, command=DotBotMoveRawCommandModel(left_y=0, right_y=-0, left_x=0, right_x=0))
+            else:
+                all_near_target = False
+                await dotbots_move_raw(address=dotbot.address, application=0, command=DotBotMoveRawCommandModel(left_y=50, right_y=-50, left_x=0, right_x=0))
+        if all_near_target:
+            break
+
+        await asyncio.sleep(dt)
+
+
     return Vec2(x=0, y=0)
 
 def assign_goals(dotbots: List[DotBotModel]) -> Dict[str, dict]:
