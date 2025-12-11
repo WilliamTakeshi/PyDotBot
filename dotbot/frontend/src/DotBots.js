@@ -8,9 +8,6 @@ import { SailBotItem } from "./SailBotItem";
 import { SailBotsMap } from "./SailBotsMap";
 import { XGOItem } from "./XGOItem";
 import { ApplicationType, inactiveAddress, maxWaypoints, maxPositionHistory } from "./utils/constants";
-import { computeOrcaVelocityForAgent } from "./utils/orca.tsx";
-import { mul } from "./utils/vec2.tsx";
-
 
 const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
   const [ activeDotbot, setActiveDotbot ] = useState(inactiveAddress);
@@ -58,8 +55,8 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
         position: { x: bot.lh2_position.x, y: bot.lh2_position.y },
         velocity: { x: 0, y: 0 },
         radius: botRadius,
-        maxSpeed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
-        preferredVelocity: preferredVel(bot),
+        max_speed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
+        preferred_velocity: preferredVel(bot),
       };
 
       // Create neighbors list (all other bots)
@@ -72,20 +69,52 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
           position: { x: otherBot.lh2_position.x, y: otherBot.lh2_position.y },
           velocity: { x: 0, y: 0 },
           radius: botRadius,
-          maxSpeed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
-          preferredVelocity: preferredVel(otherBot) ?? { x: 0, y: 0 },
+          max_speed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
+          preferred_velocity: preferredVel(otherBot) ?? { x: 0, y: 0 },
         });
       }
 
       const params = { timeHorizon: 0.2 };
 
       // Compute ORCA velocity toward the goal
-      let vNew = computeOrcaVelocityForAgent(agent, neighbors, params);
-      vNew = mul(vNew, 0.15); // Scale down velocity for smoother movement
-      console.log("vNew", vNew);
+      // let vNew = computeOrcaVelocityForAgent(agent, neighbors, params);
+      let baseUrl = "http://localhost:8000";
+
+
+      let orcaVel = await fetch(`${baseUrl}/controller/dotbots/compute_orca_velocity`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ agent: agent, neighbors: neighbors }),
+      });
+      if (!orcaVel.ok) {
+        throw new Error(`PUT failed ${resp.status}: ${await resp.text()}`);
+      }
+
+      let vNew = await orcaVel.json();
+
+      vNew = {x: vNew.x * 0.15, y: vNew.y * 0.15};
 
       waypointsList.push({ x: bot.lh2_position.x + vNew.x, y: bot.lh2_position.y + vNew.y, address: bot.address });
-      publishCommand(bot.address, bot.application, "waypoints", { threshold: bot.waypoints_threshold, waypoints: [{x: bot.lh2_position.x + vNew.x, y: bot.lh2_position.y + vNew.y, z:0}] });
+      // publishCommand(bot.address, bot.application, "waypoints", { threshold: bot.waypoints_threshold, waypoints: [{x: bot.lh2_position.x + vNew.x, y: bot.lh2_position.y + vNew.y, z:0}] });
+      // /controller/dotbots/{address}/{application}/waypoints
+      console.log("Publishing to bot", bot.address, bot.application);
+      const url = `${baseUrl}/controller/dotbots/${bot.address}/${bot.application}/waypoints`;
+
+      const resp = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ threshold: bot.waypoints_threshold, waypoints: [{x: bot.lh2_position.x + vNew.x, y: bot.lh2_position.y + vNew.y, z:0}] }),
+      });
+      if (!resp.ok) {
+        throw new Error(`PUT failed ${resp.status}: ${await resp.text()}`);
+      }
+
+      console.log("resp.json()", resp.json());
+
     }
   }, [
     publishCommand,
@@ -411,6 +440,11 @@ function preferredVel(dotbot) {
     "deadbeef22222222": { x: 0.8, y: 0.2 },
     "b0b0f00d33333333": { x: 0.2, y: 0.8 },
     "badc0de444444444": { x: 0.2, y: 0.2 },
+    // "5a40c0a13a48a55b": { x: 0.2, y: 0.2 }, // This one has one bad motor
+    "a4f3a52f628a57c5": { x: 0.2, y: 0.2 },
+    "7f286159a96bebb2": { x: 0.8, y: 0.8 },
+    // "a4f3a52f628a57c5": { x: 0.8, y: 0.8 },
+    // "7f286159a96bebb2": { x: 0.2, y: 0.2 },
   }
 
   const dx = goals[dotbot.address].x - dotbot.lh2_position.x;
@@ -418,10 +452,14 @@ function preferredVel(dotbot) {
   const dist = Math.sqrt(dx * dx + dy * dy);
 
   let preferred_vel;
-  if (dist < 0.05) {
+  if (dist < 0.1) {
     preferred_vel = { x: 0, y: 0 };
   } else {
-    const maxSpeed = 0.5;
+    const maxSpeed = 0.75;
+    // let maxSpeed = 0.5;
+    // if (dist > 0.2) {
+    //   maxSpeed = 0.75;
+    // }
     // Add small rotation bias to break symmetry (Right Hand Rule)
     const biasAngle = 0.2;
     const MAX_DEVIATION = (45 * Math.PI) / 180; // 45 degrees in radians

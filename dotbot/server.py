@@ -26,6 +26,7 @@ from dotbot.models import (
     DotBotRgbLedCommandModel,
     DotBotWaypoints,
 )
+from dotbot.orca import Agent, OrcaParams, compute_orca_velocity_for_agent
 from dotbot.protocol import (
     ApplicationType,
     PayloadCommandMoveRaw,
@@ -35,6 +36,7 @@ from dotbot.protocol import (
     PayloadLH2Location,
     PayloadLH2Waypoints,
 )
+from dotbot.vec2 import Vec2
 
 PYDOTBOT_FRONTEND_BASE_URL = os.getenv(
     "PYDOTBOT_FRONTEND_BASE_URL", "https://dotbots.github.io/PyDotBot"
@@ -235,6 +237,17 @@ async def websocket_endpoint(websocket: WebSocket):
         if websocket in api.controller.websockets:
             api.controller.websockets.remove(websocket)
 
+
+@api.put(
+    path="/controller/dotbots/compute_orca_velocity",
+    tags=["dotbots"],
+)
+async def dotbots_waypoints(
+    agent: Agent,
+    neighbors: List[Agent],
+) -> Vec2:
+    params = OrcaParams(time_horizon=0.2)
+    return compute_orca_velocity_for_agent(agent, neighbors, params)
 
 # Mount static files after all routes are defined
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend", "build")
