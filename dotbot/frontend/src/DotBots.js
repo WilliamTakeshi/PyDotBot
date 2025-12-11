@@ -52,6 +52,7 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
         position: { x: bot.lh2_position.x, y: bot.lh2_position.y },
         velocity: { x: 0, y: 0 },
         radius: botRadius,
+        direction: bot.direction,
         max_speed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
         preferred_velocity: preferredVel(bot),
       };
@@ -66,6 +67,7 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
           position: { x: otherBot.lh2_position.x, y: otherBot.lh2_position.y },
           velocity: { x: 0, y: 0 },
           radius: botRadius,
+          direction: otherBot.direction,
           max_speed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
           preferred_velocity: preferredVel(otherBot) ?? { x: 0, y: 0 },
         });
@@ -76,7 +78,6 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
       // Compute ORCA velocity toward the goal
       // let vNew = computeOrcaVelocityForAgent(agent, neighbors, params);
       let baseUrl = "http://localhost:8000";
-
 
       let orcaVel = await fetch(`${baseUrl}/controller/dotbots/compute_orca_velocity`, {
         method: "PUT",
@@ -126,8 +127,9 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
         position: { x: bot.lh2_position.x, y: bot.lh2_position.y },
         velocity: { x: 0, y: 0 },
         radius: botRadius,
+        direction: bot.direction,
         max_speed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
-        preferred_velocity: preferredVel(bot) ?? { x: 0, y: 0 },
+        preferred_velocity: { x: 0, y: 0 }, // calculated on backend
       });
     }
 
@@ -482,6 +484,10 @@ function preferredVel(dotbot) {
     // "7f286159a96bebb2": { x: 0.2, y: 0.2 },
   }
 
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  console.log(dotbot)
+  console.log(goals[dotbot.address])
+
   const dx = goals[dotbot.address].x - dotbot.lh2_position.x;
   const dy = goals[dotbot.address].y - dotbot.lh2_position.y;
   const dist = Math.sqrt(dx * dx + dy * dy);
@@ -518,6 +524,8 @@ function preferredVel(dotbot) {
       y: Math.sin(finalAngle) * maxSpeed,
     };
   }
+
+  console.log(preferred_vel)
 
   return preferred_vel;
 }

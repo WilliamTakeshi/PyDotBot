@@ -6,14 +6,16 @@
 """Module for the web server application."""
 
 import os
+import traceback
 from typing import List
 
 import httpx
-from fastapi import Depends, FastAPI, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi import Depends, FastAPI, HTTPException, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response
+from fastapi.responses import JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.base import BaseHTTPMiddleware
+import math
 
 from dotbot import pydotbot_version
 from dotbot.logger import LOGGER
@@ -25,6 +27,7 @@ from dotbot.models import (
     DotBotNotificationModel,
     DotBotQueryModel,
     DotBotRgbLedCommandModel,
+    DotBotStatus,
     DotBotWaypoints,
 )
 from dotbot.orca import Agent, OrcaParams, compute_orca_velocity_for_agent
@@ -42,7 +45,6 @@ from dotbot.vec2 import Vec2
 PYDOTBOT_FRONTEND_BASE_URL = os.getenv(
     "PYDOTBOT_FRONTEND_BASE_URL", "https://dotbots.github.io/PyDotBot"
 )
-
 
 class ReverseProxyMiddleware(BaseHTTPMiddleware):
 
@@ -72,7 +74,7 @@ class ReverseProxyMiddleware(BaseHTTPMiddleware):
 
 
 api = FastAPI(
-    debug=0,
+    debug=1,
     title="DotBot controller API",
     description="This is the DotBot controller API",
     version=pydotbot_version(),
@@ -87,6 +89,18 @@ api.add_middleware(
     allow_headers=["*"],
 )
 api.add_middleware(ReverseProxyMiddleware)
+
+@api.exception_handler(Exception)
+async def print_exceptions(request: Request, exc: Exception):
+    print("\n=== EXCEPTION CAUGHT ===")
+    traceback.print_exc()  # <-- full traceback printed to terminal
+    print("========================\n")
+
+    return JSONResponse(
+        status_code=500,
+        content={"detail": str(exc)},
+    )
+
 
 
 @api.put(
@@ -256,9 +270,43 @@ async def compute_orca_velocity(
 )
 async def run_test(
     params: OrcaParams,
-    agents: List[Agent],
 ) -> Vec2:
-    # params = OrcaParams(time_horizon=0.2)
+    query = DotBotQueryModel(
+        application=ApplicationType.DotBot,
+        status=DotBotStatus.ACTIVE
+    )
+
+    goals = {
+        "badcafe111111111": {"x": 0.8, "y": 0.8},
+        "deadbeef22222222": {"x": 0.8, "y": 0.2},
+        "b0b0f00d33333333": {"x": 0.2, "y": 0.8},
+        "badc0de444444444": {"x": 0.2, "y": 0.2},
+        # "a4f3a52f628a57c5": {"x": 0.2, "y": 0.2},
+        # "7f286159a96bebb2": {"x": 0.8, "y": 0.8},
+    }
+
+    dotbots: List[DotBotModel] = api.controller.get_dotbots(query)
+    bot_radius = 0.02
+    agents = []
+    for bot in dotbots:
+        agents.append(
+            Agent(
+                id = bot.address,
+                position=Vec2(x=bot.lh2_position.x, y=bot.lh2_position.y),
+                velocity=Vec2(x=0, y=0),
+                radius=bot_radius,
+                direction=bot.direction, 
+                max_speed=1.0, # Must match the maxSpeed used in preferred_vel calculation
+                # preferred_velocity=Vec2(x=0,y=0),
+                preferred_velocity=preferred_vel(dotbot=bot, goal=goals.get(bot.address)),
+            )
+        )
+
+
+    # for agent in agents:
+    #     goal = goals.get(agent.id)
+    #     agent.preferred_velocity = preferred_vel(agent, goal)
+
     for agent in agents:
         neighbors = [neighbor for neighbor in agents if neighbor.id != agent.id]
 
@@ -271,6 +319,57 @@ async def run_test(
         await dotbots_waypoints(address=agent.id, application=0, waypoints=waypoints)
 
     return orca_vel
+
+
+def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
+    print(dotbot)
+    print(goal)
+    if goal is None:
+        return Vec2(x=0, y=0)
+
+    dx = goal["x"] - dotbot.lh2_position.x
+    dy = goal["y"] - dotbot.lh2_position.y
+    dist = math.sqrt(dx*dx + dy*dy)
+
+    # If close to goal, stop
+    if dist < 0.1:
+        return Vec2(x=0, y=0)
+
+    max_speed = 0.75
+
+    # Right-hand rule bias
+    bias_angle = 0.2
+    # max_deviation = math.radians(45)
+    max_deviation = (45 * math.pi) / 180
+
+    # Convert bot direction into radians
+    direction = direction_to_rad(dotbot.direction)
+    print(direction)
+    print(dotbot.direction)
+
+    # Angle to goal
+    angle_to_goal = math.atan2(dy, dx) + bias_angle
+
+    delta = angle_to_goal - direction
+    # Wrap to [-π, +π]
+    delta = math.atan2(math.sin(delta), math.cos(delta))
+
+    # Clamp delta to [-MAX, +MAX]
+    if delta > max_deviation:
+        delta = max_deviation
+    if delta < -max_deviation:
+        delta = -max_deviation
+
+    # Final allowed direction
+    final_angle = direction + delta
+    result = Vec2(x=math.cos(final_angle) * max_speed, y=math.sin(final_angle) * max_speed)
+    print(result)
+    return result
+
+def direction_to_rad(direction: float) -> float:
+    rad = (direction + 90) * math.pi / 180.0
+    return math.atan2(math.sin(rad), math.cos(rad))  # normalize to [-π, π]
+
 
 # Mount static files after all routes are defined
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend", "build")

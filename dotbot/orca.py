@@ -26,6 +26,7 @@ class Agent:
     id: str
     position: Vec2
     velocity: Vec2
+    direction: float
     radius: float
     max_speed: float
     preferred_velocity: Vec2
