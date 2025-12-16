@@ -8,7 +8,7 @@
 import asyncio
 import os
 import traceback
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 import httpx
 from fastapi import Depends, FastAPI, HTTPException, Request, WebSocket, WebSocketDisconnect
@@ -46,6 +46,8 @@ from dotbot.vec2 import Vec2
 PYDOTBOT_FRONTEND_BASE_URL = os.getenv(
     "PYDOTBOT_FRONTEND_BASE_URL", "https://dotbots.github.io/PyDotBot"
 )
+
+THRESHOLD = 30 # acceptable distance from the waypoint
 
 class ReverseProxyMiddleware(BaseHTTPMiddleware):
 
@@ -278,12 +280,63 @@ async def run_test(
     )
     dotbots: List[DotBotModel] = api.controller.get_dotbots(query)
 
-    # Define the 
-    goals = assign_goals(dotbots)
+    # Phase 1: initial queue
+    sorted_bots = order_bots(dotbots)
+    goals = assign_queue_goals(sorted_bots)
 
+    await send_to_goal(query, goals, params)
+
+    # Phase 2: charging loop
+    remaining = sorted_bots.copy()
+    while remaining:
+        dotbots = api.controller.get_dotbots(query)
+        total_count = len(dotbots)
+        dotbots = [b for b in dotbots if b.address in {r.address for r in remaining}]
+        remaining = order_bots(dotbots)
+
+        # Assign charging + shift goals
+        goals = assign_charge_goals(remaining)
+        await send_to_goal(query, goals, params)
+
+        # Head just finished charging
+        head = remaining[0]
+        
+        dt = 0.1
+        # wait for charging...
+        await asyncio.sleep(50*dt)
+        
+        # Just back a bit
+        for _ in range(25):
+            await dotbots_move_raw(head.address, head.application, DotBotMoveRawCommandModel(left_x=0, right_x=0, left_y=-90, right_y=-100))
+            await asyncio.sleep(dt)
+
+        PARK_X = 0.8
+        PARK_Y = 0.2
+        PARK_SPACING = 0.15
+
+        parked_count = total_count - len(remaining)
+
+        # Send head to parking
+        await send_to_goal(
+            query,
+            {
+                head.address: {"x": PARK_X, "y": PARK_Y + parked_count * PARK_SPACING}
+            },
+            params,
+        )
+
+        # Remove head from queue
+        remaining = remaining[1:]
+
+
+
+    return Vec2(x=0, y=0)
+
+
+async def send_to_goal(query: DotBotQueryModel, goals: Dict[str, dict], params: OrcaParams) -> None:
+    dt = 0.20
     bot_radius = 0.02
-    dt = 0.10
-
+    #  Queue
     while True:
         dotbots: List[DotBotModel] = api.controller.get_dotbots(query)
         agents: List[Agent] = []
@@ -301,76 +354,80 @@ async def run_test(
                 )
             )
 
-        all_done = all(a.preferred_velocity.x == 0 and a.preferred_velocity.y == 0 for a in agents)
-        if all_done:
+        queue_ready = all(a.preferred_velocity.x == 0 and a.preferred_velocity.y == 0 for a in agents)
+        if queue_ready:
             break
         for agent in agents:
             neighbors = [neighbor for neighbor in agents if neighbor.id != agent.id]
 
 
             orca_vel = await compute_orca_velocity(agent, neighbors=neighbors, params=params)
-            orca_vel = Vec2(x=orca_vel.x * 0.15, y=orca_vel.y * 0.15)
+            STEP_SCALE = 0.1
+            step = Vec2(x=orca_vel.x * STEP_SCALE, y=orca_vel.y * STEP_SCALE)
 
-            waypoints = DotBotWaypoints(threshold=20, waypoints=[DotBotLH2Position(x=agent.position.x + orca_vel.x, y=agent.position.y + orca_vel.y, z=0)])
+            # ---- CLAMP STEP TO GOAL DISTANCE ----
+            dx = goals.get(bot.address)["x"] - agent.position.x
+            dy = goals.get(bot.address)["y"] - agent.position.y
+            dist_to_goal = math.hypot(dx, dy)
+
+            step_len = math.hypot(step.x, step.y)
+            if step_len > dist_to_goal and step_len > 0:
+                scale = dist_to_goal / step_len
+                step = Vec2(x=step.x * scale, y=step.y * scale)
+            # ------------------------------------
+
+            waypoints = DotBotWaypoints(threshold=THRESHOLD, waypoints=[DotBotLH2Position(x=agent.position.x + step.x, y=agent.position.y + step.y, z=0)])
             # POST waypoint
             await dotbots_waypoints(address=agent.id, application=0, waypoints=waypoints)
         await asyncio.sleep(dt)
+    return None
 
-    TARGET_DIR = 180
-    TOLERANCE = 10  # degrees
+def order_bots(dotbots: List[DotBotModel]) -> List[DotBotModel]:
+    BASE_X, BASE_Y = 0.2, 0.8
 
+    def key(bot):
+        dx = bot.lh2_position.x - BASE_X
+        dy = bot.lh2_position.y - BASE_Y
+        return dx*dx + dy*dy
 
-    while True:
-        all_near_target = True
-
-        dotbots: List[DotBotModel] = api.controller.get_dotbots(query)
-        for dotbot in dotbots:
-            if abs(dotbot.direction - TARGET_DIR) < TOLERANCE:
-                await dotbots_move_raw(address=dotbot.address, application=0, command=DotBotMoveRawCommandModel(left_y=0, right_y=-0, left_x=0, right_x=0))
-            else:
-                all_near_target = False
-                await dotbots_move_raw(address=dotbot.address, application=0, command=DotBotMoveRawCommandModel(left_y=50, right_y=-50, left_x=0, right_x=0))
-        if all_near_target:
-            break
-
-        await asyncio.sleep(dt)
+    return sorted(dotbots, key=key)
 
 
-    return Vec2(x=0, y=0)
-
-def assign_goals(dotbots: List[DotBotModel]) -> Dict[str, dict]:
-    """
-    Assign goals based on distance to the base goal (0.2, 0.2):
-    - Closest bot gets (0.2, 0.2)
-    - Next gets (0.2, 0.3)
-    - Next gets (0.2, 0.4)
-    - etc.
-    """
-
-    (base_x, base_y) = (0.2, 0.4)
-    spacing = 0.1  # distance between goal rows
-
-    # --- Compute distance of each bot to (base_x, base_y) ---
-    bots_with_dist = []
-    for bot in dotbots:
-        dx = bot.lh2_position.x - base_x
-        dy = bot.lh2_position.y - base_y
-        dist = (dx*dx + dy*dy) ** 0.5
-        bots_with_dist.append((dist, bot))
-
-    # --- Sort by distance ascending ---
-    bots_with_dist.sort(key=lambda item: item[0])
-
-    # --- Assign goals in sorted order ---
+def assign_queue_goals(
+    ordered: List[DotBotModel],
+    base_x=0.35,
+    base_y=0.8,
+    spacing=0.2,
+) -> Dict[str, dict]:
     goals = {}
-    for idx, (_, bot) in enumerate(bots_with_dist):
+    for i, bot in enumerate(ordered):
         goals[bot.address] = {
-            "x": base_x,
-            "y": base_y + idx * spacing,
+            "x": base_x + i * spacing,
+            "y": base_y,
         }
-
     return goals
 
+def assign_charge_goals(
+    ordered: List[DotBotModel],
+    base_x=0.3,
+    base_y=0.8,
+    spacing=0.2,
+) -> Dict[str, dict]:
+    goals = {}
+    # Send the first one to the charger
+    head = ordered[0]
+    goals[head.address] = {
+        "x": 0.2,
+        "y": 0.2,
+    }
+
+    # Remaining bots shift left in the queue
+    for i, bot in enumerate(ordered[1:]):
+        goals[bot.address] = {
+            "x": base_x + i * spacing,
+            "y": base_y,
+        }
+    return goals
 
 def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
     if goal is None:
@@ -380,22 +437,21 @@ def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
     dy = goal["y"] - dotbot.lh2_position.y
     dist = math.sqrt(dx*dx + dy*dy)
 
+    dist1000 = dist * 1000
     # If close to goal, stop
-    if dist < 0.02:
+    if dist1000 < THRESHOLD:
         return Vec2(x=0, y=0)
-
-    max_speed = 0.75 if dist >= 0.1 else 0.75 * (dist / 0.1)
+    max_speed = 0.75
+    # max_speed = 0.75 if dist1000 >= THRESHOLD else 0.75 * (dist / 0.1)
 
 
     # Right-hand rule bias
-    bias_angle = 0.2
-    # max_deviation = math.radians(45)
-    max_deviation = (45 * math.pi) / 180
+    bias_angle = 0.0
+    # Bot can only walk on a cone [-60, 60] in front of himself 
+    max_deviation = math.radians(60)
 
     # Convert bot direction into radians
     direction = direction_to_rad(dotbot.direction)
-    print(direction)
-    print(dotbot.direction)
 
     # Angle to goal
     angle_to_goal = math.atan2(dy, dx) + bias_angle
@@ -413,7 +469,6 @@ def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
     # Final allowed direction
     final_angle = direction + delta
     result = Vec2(x=math.cos(final_angle) * max_speed, y=math.sin(final_angle) * max_speed)
-    print(result)
     return result
 
 def direction_to_rad(direction: float) -> float:

@@ -112,6 +112,15 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
     publishCommand,
 ]);
 
+const resetTest = useCallback(async () => {
+    const currentDotbots = dotbotsRef.current;
+    for (const bot of currentDotbots) {
+      await publishCommand(bot.id, bot.application, "waypoints", { threshold: bot.waypoints_threshold, waypoints: [] });
+    }
+  }, [
+    publishCommand,
+]);
+
   const runTest = useCallback(async () => {
     console.log("runTest");
     const currentDotbots = dotbotsRef.current;
@@ -464,7 +473,8 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
       )}
       <div><button onClick={() => runOrcaStepWithState()}>One Step</button></div>
       <div><button onClick={() => runTest()}>Run test</button></div>
-      <div><button onClick={handleClick}>{running ? "stop" : "run"}</button></div>
+      <div><button onClick={() => resetTest()}>Reset test</button></div>
+      {/* <div><button onClick={handleClick}>{running ? "stop" : "run"}</button></div> */}
     </div>
     </>
   );
