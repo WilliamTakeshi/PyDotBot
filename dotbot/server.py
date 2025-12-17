@@ -280,6 +280,10 @@ async def run_test(
     )
     dotbots: List[DotBotModel] = api.controller.get_dotbots(query)
 
+    # Cosmetic: all bots are red
+    for dotbot in dotbots:
+        await dotbots_rgb_led(dotbot.address, dotbot.application, DotBotRgbLedCommandModel(red=255,green=0,blue=0))
+
     # Phase 1: initial queue
     sorted_bots = order_bots(dotbots)
     goals = assign_queue_goals(sorted_bots)
@@ -302,9 +306,22 @@ async def run_test(
         head = remaining[0]
         
         dt = 0.1
-        # wait for charging...
-        await asyncio.sleep(50*dt)
-        
+        # Cosmetic: wait for charging...
+        colors = [
+            (255, 255, 0),  # yellow
+            (0, 255, 0),    # green
+        ]
+        await asyncio.sleep(20 * dt)
+
+        for r, g, b in colors:
+            await dotbots_rgb_led(
+                head.address,
+                head.application,
+                DotBotRgbLedCommandModel(red=r, green=g, blue=b),
+            )
+            await asyncio.sleep(20 * dt)
+
+
         # Just back a bit
         for _ in range(25):
             await dotbots_move_raw(head.address, head.application, DotBotMoveRawCommandModel(left_x=0, right_x=0, left_y=-90, right_y=-100))
@@ -366,14 +383,16 @@ async def send_to_goal(query: DotBotQueryModel, goals: Dict[str, dict], params: 
             step = Vec2(x=orca_vel.x * STEP_SCALE, y=orca_vel.y * STEP_SCALE)
 
             # ---- CLAMP STEP TO GOAL DISTANCE ----
-            dx = goals.get(bot.address)["x"] - agent.position.x
-            dy = goals.get(bot.address)["y"] - agent.position.y
-            dist_to_goal = math.hypot(dx, dy)
+            goal = goals.get(agent.id)
+            if goal is not None:
+                dx = goal["x"] - agent.position.x
+                dy = goal["y"] - agent.position.y
+                dist_to_goal = math.hypot(dx, dy)
 
-            step_len = math.hypot(step.x, step.y)
-            if step_len > dist_to_goal and step_len > 0:
-                scale = dist_to_goal / step_len
-                step = Vec2(x=step.x * scale, y=step.y * scale)
+                step_len = math.hypot(step.x, step.y)
+                if step_len > dist_to_goal and step_len > 0:
+                    scale = dist_to_goal / step_len
+                    step = Vec2(x=step.x * scale, y=step.y * scale)
             # ------------------------------------
 
             waypoints = DotBotWaypoints(threshold=THRESHOLD, waypoints=[DotBotLH2Position(x=agent.position.x + step.x, y=agent.position.y + step.y, z=0)])
@@ -409,7 +428,7 @@ def assign_queue_goals(
 
 def assign_charge_goals(
     ordered: List[DotBotModel],
-    base_x=0.3,
+    base_x=0.35,
     base_y=0.8,
     spacing=0.2,
 ) -> Dict[str, dict]:
