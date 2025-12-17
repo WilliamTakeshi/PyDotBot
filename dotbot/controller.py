@@ -433,8 +433,7 @@ class Controller:
                 writer.close()
                 break
         url = (
-            f"http://localhost:3000/PyDotBot?"
-            # f"http://localhost:{self.settings.controller_http_port}/PyDotBot?"
+            f"http://localhost:{self.settings.controller_http_port}/PyDotBot?"
             f"pin={self.qrkey.pin_code}&"
             f"mqtt_host={qrkey_settings.mqtt_host}&"
             f"mqtt_port={qrkey_settings.mqtt_ws_port}&"

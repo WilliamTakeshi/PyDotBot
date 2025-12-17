@@ -21,112 +21,11 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
     dotbotsRef.current = dotbots;
   }, [dotbots]);
 
-  async function handleClick() {
-    if (!running) {
-      setRunning(true);
-      loopRef.current = true;
-      runLoop();
-    } else {
-      setRunning(false);
-      loopRef.current = false;
-    }
-  }
-
-  async function runLoop() {
-    while (loopRef.current) {
-      await runOrcaStepWithState();
-      await sleep(500);
-    }
-  }
-
-  const runOrcaStepWithState = useCallback(async () => {
-    const currentDotbots = dotbotsRef.current;
-
-    const botRadius = 0.02;
-    let waypointsList = [];
-
-    // Process each bot that has a goal
-    for (const bot of currentDotbots) {
-      const agent = {
-        id: bot.address,
-        position: { x: bot.lh2_position.x, y: bot.lh2_position.y },
-        velocity: { x: 0, y: 0 },
-        radius: botRadius,
-        direction: bot.direction,
-        max_speed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
-        preferred_velocity: preferredVel(bot),
-      };
-
-      // Create neighbors list (all other bots)
-      const neighbors = [];
-      for (const otherBot of currentDotbots) {
-        if (otherBot.address === bot.address) continue; // Skip self
-
-        neighbors.push({
-          id: otherBot.address,
-          position: { x: otherBot.lh2_position.x, y: otherBot.lh2_position.y },
-          velocity: { x: 0, y: 0 },
-          radius: botRadius,
-          direction: otherBot.direction,
-          max_speed: 1.0, // Must match the maxSpeed used in preferred_vel calculation
-          preferred_velocity: preferredVel(otherBot) ?? { x: 0, y: 0 },
-        });
-      }
-
-      const params = { time_horizon: 0.2 };
-
-      // Compute ORCA velocity toward the goal
-      // let vNew = computeOrcaVelocityForAgent(agent, neighbors, params);
-      let baseUrl = "http://localhost:8000";
-
-      let orcaVel = await fetch(`${baseUrl}/controller/dotbots/compute_orca_velocity`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ agent: agent, neighbors: neighbors, params: params }),
-      });
-      if (!orcaVel.ok) {
-        throw new Error(`PUT failed ${orcaVel.status}: ${await orcaVel.text()}`);
-      }
-
-      let vNew = await orcaVel.json();
-
-      vNew = {x: vNew.x * 0.15, y: vNew.y * 0.15};
-
-      const url = `${baseUrl}/controller/dotbots/${bot.address}/${bot.application}/waypoints`;
-
-      const resp = await fetch(url, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ threshold: bot.waypoints_threshold, waypoints: [{x: bot.lh2_position.x + vNew.x, y: bot.lh2_position.y + vNew.y, z:0}] }),
-      });
-      if (!resp.ok) {
-        throw new Error(`PUT failed ${resp.status}: ${await resp.text()}`);
-      }
-
-    }
-  }, [
-    publishCommand,
-]);
-
-const resetTest = useCallback(async () => {
-    const currentDotbots = dotbotsRef.current;
-    for (const bot of currentDotbots) {
-      await publishCommand(bot.id, bot.application, "waypoints", { threshold: bot.waypoints_threshold, waypoints: [] });
-    }
-  }, [
-    publishCommand,
-]);
-
   const runTest = useCallback(async () => {
     console.log("runTest");
     const currentDotbots = dotbotsRef.current;
 
     const botRadius = 0.02;
-    let waypointsList = [];
 
     // Create all agents list
     const agents = [];
@@ -142,14 +41,10 @@ const resetTest = useCallback(async () => {
       });
     }
 
-    console.log("agents: ", agents);
-
     const orca_params = { time_horizon: 0.2 };
 
     // Compute ORCA velocity toward the goal
-    // let vNew = computeOrcaVelocityForAgent(agent, neighbors, params);
     let baseUrl = "http://localhost:8000";
-
 
     let orcaVel = await fetch(`${baseUrl}/controller/dotbots/run_test`, {
       method: "POST",
@@ -182,7 +77,18 @@ const resetTest = useCallback(async () => {
     }
   };
 
-  const insertWaypoint = useCallback((x, y, dotbot) => {
+  const mapClicked = useCallback((x, y) => {
+    if (!dotbots || dotbots.length === 0) {
+      return;
+    }
+
+    const activeDotbots = dotbots.filter(dotbot => activeDotbot === dotbot.address);
+    // Do nothing if no active dotbot
+    if (activeDotbots.length === 0) {
+      return;
+    }
+
+    const dotbot = activeDotbots[0];
     // Limit number of waypoints to maxWaypoints
     if (dotbot.waypoints.length >= maxWaypoints) {
       return;
@@ -220,23 +126,6 @@ const resetTest = useCallback(async () => {
       }
     }
   }, [dotbots, updateDotbots]
-  );
-
-
-  const mapClicked = useCallback((x, y) => {
-    if (!dotbots || dotbots.length === 0) {
-      return;
-    }
-
-    const activeDotbots = dotbots.filter(dotbot => activeDotbot === dotbot.address);
-    // Do nothing if no active dotbot
-    if (activeDotbots.length === 0) {
-      return;
-    }
-
-    const dotbot = activeDotbots[0];
-    insertWaypoint(x, y, dotbot);
-  }, [activeDotbot, dotbots, insertWaypoint]
   );
 
   const applyWaypoints = useCallback(async (address, application) => {
@@ -471,80 +360,10 @@ const resetTest = useCallback(async () => {
       }
       </>
       )}
-      <div><button onClick={() => runOrcaStepWithState()}>One Step</button></div>
       <div><button onClick={() => runTest()}>Run test</button></div>
-      <div><button onClick={() => resetTest()}>Reset test</button></div>
-      {/* <div><button onClick={handleClick}>{running ? "stop" : "run"}</button></div> */}
     </div>
     </>
   );
-}
-
-function preferredVel(dotbot) {
-  // TODO: get goal from dotbot state
-  const goals = {
-    "badcafe111111111": { x: 0.8, y: 0.8 },
-    "deadbeef22222222": { x: 0.8, y: 0.2 },
-    "b0b0f00d33333333": { x: 0.2, y: 0.8 },
-    "badc0de444444444": { x: 0.2, y: 0.2 },
-    // "5a40c0a13a48a55b": { x: 0.2, y: 0.2 }, // This one has one bad motor
-    "a4f3a52f628a57c5": { x: 0.2, y: 0.2 },
-    "7f286159a96bebb2": { x: 0.8, y: 0.8 },
-    // "a4f3a52f628a57c5": { x: 0.8, y: 0.8 },
-    // "7f286159a96bebb2": { x: 0.2, y: 0.2 },
-  }
-
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-  console.log(dotbot)
-  console.log(goals[dotbot.address])
-
-  const dx = goals[dotbot.address].x - dotbot.lh2_position.x;
-  const dy = goals[dotbot.address].y - dotbot.lh2_position.y;
-  const dist = Math.sqrt(dx * dx + dy * dy);
-
-  let preferred_vel;
-  if (dist < 0.1) {
-    preferred_vel = { x: 0, y: 0 };
-  } else {
-    const maxSpeed = 0.75;
-    // let maxSpeed = 0.5;
-    // if (dist > 0.2) {
-    //   maxSpeed = 0.75;
-    // }
-    // Add small rotation bias to break symmetry (Right Hand Rule)
-    const biasAngle = 0.2;
-    const MAX_DEVIATION = (45 * Math.PI) / 180; // 45 degrees in radians
-    const direction = directionToRad(dotbot.direction);
-    // Angle from bot to goal in world frame
-    let angleToGoal = Math.atan2(dy, dx) + biasAngle;
-
-    let delta = angleToGoal - direction;
-    // Wrap into [-π, π]
-    delta = Math.atan2(Math.sin(delta), Math.cos(delta));
-
-    // Clamp to [-30°, +30°]
-    if (delta > MAX_DEVIATION) delta = MAX_DEVIATION;
-    if (delta < -MAX_DEVIATION) delta = -MAX_DEVIATION;
-
-    // Final allowed direction in world frame
-    const finalAngle = direction + delta;
-
-    preferred_vel =  {
-      x: Math.cos(finalAngle) * maxSpeed,
-      y: Math.sin(finalAngle) * maxSpeed,
-    };
-  }
-
-  console.log(preferred_vel)
-
-  return preferred_vel;
-}
-
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-function directionToRad(direction) {
-  const rad = ((direction + 90) * Math.PI) / 180;
-  return Math.atan2(Math.sin(rad), Math.cos(rad)); // normalize
 }
 
 export default DotBots;
