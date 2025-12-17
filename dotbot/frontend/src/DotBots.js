@@ -14,8 +14,6 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
   const [ showDotBotHistory, setShowDotBotHistory ] = useState(true);
   const [ dotbotHistorySize, setDotbotHistorySize ] = useState(maxPositionHistory);
   const [ showSailBotHistory, setShowSailBotHistory ] = useState(true);
-  const [running, setRunning] = useState(false);
-  const loopRef = useRef(null);
   const dotbotsRef = useRef(dotbots);
   useEffect(() => {
     dotbotsRef.current = dotbots;
@@ -56,9 +54,7 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
     if (!orcaVel.ok) {
       throw new Error(`PUT failed ${orcaVel.status}: ${await orcaVel.text()}`);
     }
-  }, [
-    publishCommand,
-]);
+  }, []);
 
   const control = useKeyPress("Control");
   const enter = useKeyPress("Enter")
@@ -125,7 +121,7 @@ const DotBots = ({ dotbots, updateDotbots, publishCommand, publish }) => {
         }
       }
     }
-  }, [dotbots, updateDotbots]
+  }, [dotbots, updateDotbots, activeDotbot]
   );
 
   const applyWaypoints = useCallback(async (address, application) => {
