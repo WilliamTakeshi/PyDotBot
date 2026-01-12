@@ -36,7 +36,6 @@ class Agent:
     id: str
     position: Vec2
     velocity: Vec2
-    direction: float
     radius: float
     max_speed: float
     preferred_velocity: Vec2
@@ -106,9 +105,10 @@ def compute_orca_line_pair(A: Agent, B: Agent, params: OrcaParams) -> OrcaLine:
                 (-rel_pos.x * combined_radius + rel_pos.y * leg) / dist_sq,
             )
 
-            side = math.copysign(1, cross(rel_vel, rel_unit))
+            # side = math.copysign(1, cross(rel_vel, rel_unit))
+            side = cross(rel_pos, w)
 
-            if side >= 0:
+            if side > 0:
                 leg_dir = left_leg
             else:
                 leg_dir = right_leg
@@ -123,15 +123,16 @@ def compute_orca_line_pair(A: Agent, B: Agent, params: OrcaParams) -> OrcaLine:
 
     else:
         # CASE 2: Already colliding
-        dist = math.sqrt(dist_sq)
-        rel_unit = mul(rel_pos, 1.0 / dist) if dist > 0 else vec(1, 0)
+        inv_dt = 1.0 / params.time_horizon
+        w = sub(rel_vel, mul(rel_pos, inv_dt))
+        w_len = vec2_length(w)
+        unit_w = mul(w, 1.0 / w_len) if w_len > 0 else vec(1, 0)
 
-        penetration = combined_radius - dist
-        u = mul(rel_unit, penetration)
+        u = mul(unit_w, combined_radius * inv_dt - w_len)
 
         line.point = add(A.velocity, mul(u, 0.5))
-        line.normal = rel_unit
-        line.direction = perp(line.normal)
+        line.normal = unit_w
+        line.direction = perp(unit_w)
 
     line.direction = normalize(line.direction)
     line.normal = normalize(line.normal)
