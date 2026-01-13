@@ -1,68 +1,68 @@
 [[dotbots]]
-address = "AAAAAAAAAAAAAA00"
+address = "AAAAAAAAAAAA0000"
 calibrated = true
 pos_x = 900000
 pos_y = 500000
 theta = 0.00000
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA01"
+address = "AAAAAAAAAAAA0001"
 calibrated = true
 pos_x = 823606
 pos_y = 735114
 theta = 0.62832
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA02"
+address = "AAAAAAAAAAAA0002"
 calibrated = true
 pos_x = 623606
 pos_y = 880422
 theta = 1.25664
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA03"
+address = "AAAAAAAAAAAA0003"
 calibrated = true
 pos_x = 376393
 pos_y = 880422
 theta = 1.88496
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA04"
+address = "AAAAAAAAAAAA0004"
 calibrated = true
 pos_x = 176393
 pos_y = 735114
 theta = 2.51327
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA05"
+address = "AAAAAAAAAAAA0005"
 calibrated = true
 pos_x = 100000
 pos_y = 500000
 theta = 3.14159
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA06"
+address = "AAAAAAAAAAAA0006"
 calibrated = true
 pos_x = 176393
 pos_y = 264885
 theta = 3.76991
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA07"
+address = "AAAAAAAAAAAA0007"
 calibrated = true
 pos_x = 376393
 pos_y = 119577
 theta = 4.39823
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA08"
+address = "AAAAAAAAAAAA0008"
 calibrated = true
 pos_x = 623606
 pos_y = 119577
 theta = 5.02655
 
 [[dotbots]]
-address = "AAAAAAAAAAAAAA09"
+address = "AAAAAAAAAAAA0009"
 calibrated = true
 pos_x = 823606
 pos_y = 264885

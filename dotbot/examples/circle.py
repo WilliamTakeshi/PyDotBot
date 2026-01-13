@@ -19,12 +19,12 @@ from dotbot.models import (
 from dotbot.protocol import ApplicationType
 from dotbot.rest import RestClient
 
-THRESHOLD = 30  # Acceptable distance error to consider a waypoint reached
-DT = 0.1  # Control loop period (seconds)
+THRESHOLD = 20  # Acceptable distance error to consider a waypoint reached
+DT = 0.05  # Control loop period (seconds)
 
 # TODO: Measure these values for real dotbots
 BOT_RADIUS = 0.04  # Physical radius of a DotBot (unit), used for collision avoidance
-MAX_SPEED = 0.04  # Maximum allowed linear speed of a bot
+MAX_SPEED = 0.035  # Maximum allowed linear speed of a bot
 
 async def run_convergence(
     params: OrcaParams,
@@ -79,6 +79,8 @@ async def send_to_goal(
     while True:
         dotbots = await client.fetch_active_dotbots()
         agents: List[Agent] = []
+        dotbot_by_address = {bot.address: bot for bot in dotbots}
+
 
         for bot in dotbots:
             bot_pref_vel = preferred_vel(
@@ -111,6 +113,12 @@ async def send_to_goal(
             orca_vel = compute_orca_velocity_for_agent(agent, neighbors=neighbors, params=params)
             step = Vec2(x=orca_vel.x, y=orca_vel.y)
 
+            # step = clamp_step_to_cone(
+            #     step,
+            #     heading_rad=direction_to_rad(dotbot_by_address[agent.id].direction),
+            #     max_deviation=math.radians(45),
+            # )
+
             # ---- CLAMP STEP TO GOAL DISTANCE ----
             goal = goals.get(agent.id)
             if goal is not None:
@@ -140,6 +148,35 @@ async def send_to_goal(
         await asyncio.sleep(DT)
     return None
 
+def clamp_step_to_cone(
+    step: Vec2,
+    heading_rad: float,
+    max_deviation: float,
+) -> Vec2:
+    """
+    Clamp the step direction to a cone around heading_rad.
+    """
+    step_len = math.hypot(step.x, step.y)
+    if step_len == 0:
+        return step
+
+    step_angle = math.atan2(step.y, step.x)
+
+    delta = step_angle - heading_rad
+    delta = math.atan2(math.sin(delta), math.cos(delta))  # wrap [-π, π]
+
+    if abs(delta) <= max_deviation:
+        return step
+
+    # Clamp angle to cone boundary
+    clamped_angle = heading_rad + math.copysign(max_deviation, delta)
+
+    return Vec2(
+        x=math.cos(clamped_angle) * step_len,
+        y=math.sin(clamped_angle) * step_len,
+    )
+
+
 
 def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
     if goal is None:
@@ -155,9 +192,9 @@ def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
         return Vec2(x=0, y=0)
 
     # Right-hand rule bias
-    bias_angle = 0.0
+    bias_angle = 0.05
     # Bot can only walk on a cone [-30, 30] in front of himself
-    max_deviation = math.radians(30)
+    max_deviation = math.radians(45)
 
     # Convert bot direction into radians
     direction = direction_to_rad(dotbot.direction)
@@ -169,11 +206,11 @@ def preferred_vel(dotbot: DotBotModel, goal: Vec2 | None) -> Vec2:
     # Wrap to [-π, +π]
     delta = math.atan2(math.sin(delta), math.cos(delta))
 
-    # Clamp delta to [-MAX, +MAX]
-    if delta > max_deviation:
-        delta = max_deviation
-    if delta < -max_deviation:
-        delta = -max_deviation
+    # # Clamp delta to [-MAX, +MAX]
+    # if delta > max_deviation:
+    #     delta = max_deviation
+    # if delta < -max_deviation:
+    #     delta = -max_deviation
 
     # Final allowed direction
     final_angle = direction + delta
@@ -207,7 +244,7 @@ def estimate_velocity_from_history(
 
 
 async def main() -> None:
-    params = OrcaParams(time_horizon=DT)
+    params = OrcaParams(time_horizon=3*DT, time_step=DT)
     url = os.getenv("DOTBOT_CONTROLLER_URL", "localhost")
     port = os.getenv("DOTBOT_CONTROLLER_PORT", "8000")
     use_https = os.getenv("DOTBOT_CONTROLLER_USE_HTTPS", False)

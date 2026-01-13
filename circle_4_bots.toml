@@ -1,0 +1,27 @@
+[[dotbots]]
+address = "AAAAAAAAAAAA0000"
+calibrated = true
+pos_x = 900000
+pos_y = 500000
+theta = 0.00000
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0001"
+calibrated = true
+pos_x = 500000
+pos_y = 900000
+theta = 1.57080
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0002"
+calibrated = true
+pos_x = 100000
+pos_y = 500000
+theta = 3.14159
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0003"
+calibrated = true
+pos_x = 499999
+pos_y = 100000
+theta = 4.71239

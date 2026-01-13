@@ -1,12 +1,12 @@
 import math
 
-N_BOTS = 10
+N_BOTS = 16
 CENTER_X = 500_000
 CENTER_Y = 500_000
-RADIUS = 400_000  # spacing radius
+RADIUS = 300_000  # spacing radius
 
 def gen_address(i: int) -> str:
-    return f"AAAAAAAAAAAAAA{i:02X}"
+    return f"AAAAAAAAAAAA{i:04X}"
 
 def clamp_theta(t: float) -> float:
     return max(0.0, min(6.14, t))
@@ -38,5 +38,5 @@ if __name__ == "__main__":
     toml_str = generate_circle_toml()
     # print(toml_str)
 
-    with open("circle_10_bots.toml", "w") as f:
+    with open(f"circle_{N_BOTS}_bots.toml", "w") as f:
         f.write(toml_str)

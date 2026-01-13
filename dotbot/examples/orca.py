@@ -44,6 +44,7 @@ class Agent:
 @dataclass
 class OrcaParams:
     time_horizon: float
+    time_step: float
 
 
 def cross(a: Vec2, b: Vec2) -> float:
@@ -123,7 +124,7 @@ def compute_orca_line_pair(A: Agent, B: Agent, params: OrcaParams) -> OrcaLine:
 
     else:
         # CASE 2: Already colliding
-        inv_dt = 1.0 / params.time_horizon
+        inv_dt = 0.5 / params.time_step
         w = sub(rel_vel, mul(rel_pos, inv_dt))
         w_len = vec2_length(w)
         unit_w = mul(w, 1.0 / w_len) if w_len > 0 else vec(1, 0)
