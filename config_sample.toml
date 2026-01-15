@@ -24,4 +24,4 @@ log_level = "error"
 log_output = "pydotbot.log"
 
 # --- Simulator ---
-simulator_init_state_path = "grid_100_bots.toml"
+simulator_init_state_path = "grid_200_bots.toml"

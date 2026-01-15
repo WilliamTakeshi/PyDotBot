@@ -174,7 +174,7 @@ class DotBotSimulator(threading.Thread):
             "DotBot simulator update", x=self.pos_x, y=self.pos_y, theta=self.theta
         )
         self.time_elapsed_s += dt
-        time.sleep(dt)
+        # time.sleep(dt)
 
     def advertise(self):
         """Send an adertisement message to the gateway."""
@@ -197,9 +197,10 @@ class DotBotSimulator(threading.Thread):
         """Decode the serial input received from the gateway."""
         if bytes_[1] in [0xFF, 0xFE]:
             return
-        frame = Frame.from_bytes(bytes_)
+        header = Header().from_bytes(bytes_[0:18])
 
-        if self.address == hex(frame.header.destination)[2:]:
+        if self.address == hex(header.destination)[2:]:
+            frame = Frame.from_bytes(bytes_)
             if frame.payload_type == PayloadType.CMD_MOVE_RAW:
                 self.controller_mode = DotBotSimulatorMode.MANUAL
                 self.v_left = frame.packet.payload.left_y
@@ -226,8 +227,9 @@ class DotBotSimulator(threading.Thread):
 
     def run(self):
         """Update the state of the dotbot simulator."""
-        while self.running is True:
-            self.update(0.1)
+        pass
+        # while self.running is True:
+        #     self.update(0.1)
 
 
 class DotBotSimulatorCommunicationInterface(threading.Thread):
@@ -256,11 +258,16 @@ class DotBotSimulatorCommunicationInterface(threading.Thread):
         time.sleep(0.1)
 
         while self.running:
+            for _ in range(5):
+                for dotbot in self.dotbots:
+                    dotbot.update(0.1)
+                time.sleep(0.1)
+
             for dotbot in self.dotbots:
                 self.on_frame_received(dotbot.advertise())
-            time.sleep(
-                0.5 - PayloadDotBotAdvertisement().size * len(self.dotbots) * 0.000001
-            )
+            # time.sleep(
+            #     0.5 - PayloadDotBotAdvertisement().size * len(self.dotbots) * 0.000001
+            # )
 
     def stop(self):
         self.logger.info("Stopping DotBot Simulation...")
