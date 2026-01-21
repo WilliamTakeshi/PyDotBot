@@ -1,0 +1,139 @@
+[[dotbots]]
+address = "AAAAAAAAAAAA0000"
+calibrated = true
+pos_x = 900000
+pos_y = 500000
+theta = 0.00000
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0001"
+calibrated = true
+pos_x = 880422
+pos_y = 623606
+theta = 0.31416
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0002"
+calibrated = true
+pos_x = 823606
+pos_y = 735114
+theta = 0.62832
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0003"
+calibrated = true
+pos_x = 735114
+pos_y = 823606
+theta = 0.94248
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0004"
+calibrated = true
+pos_x = 623606
+pos_y = 880422
+theta = 1.25664
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0005"
+calibrated = true
+pos_x = 500000
+pos_y = 900000
+theta = 1.57080
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0006"
+calibrated = true
+pos_x = 376393
+pos_y = 880422
+theta = 1.88496
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0007"
+calibrated = true
+pos_x = 264885
+pos_y = 823606
+theta = 2.19911
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0008"
+calibrated = true
+pos_x = 176393
+pos_y = 735114
+theta = 2.51327
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0009"
+calibrated = true
+pos_x = 119577
+pos_y = 623606
+theta = 2.82743
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000A"
+calibrated = true
+pos_x = 100000
+pos_y = 500000
+theta = 3.14159
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000B"
+calibrated = true
+pos_x = 119577
+pos_y = 376393
+theta = 3.45575
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000C"
+calibrated = true
+pos_x = 176393
+pos_y = 264885
+theta = 3.76991
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000D"
+calibrated = true
+pos_x = 264885
+pos_y = 176393
+theta = 4.08407
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000E"
+calibrated = true
+pos_x = 376393
+pos_y = 119577
+theta = 4.39823
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000F"
+calibrated = true
+pos_x = 499999
+pos_y = 100000
+theta = 4.71239
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0010"
+calibrated = true
+pos_x = 623606
+pos_y = 119577
+theta = 5.02655
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0011"
+calibrated = true
+pos_x = 735114
+pos_y = 176393
+theta = 5.34071
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0012"
+calibrated = true
+pos_x = 823606
+pos_y = 264885
+theta = 5.65487
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0013"
+calibrated = true
+pos_x = 880422
+pos_y = 376393
+theta = 5.96903

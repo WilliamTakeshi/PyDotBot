@@ -97,7 +97,12 @@ async def dotbots_move_raw(
     """Set the current active DotBot."""
     if address not in api.controller.dotbots:
         raise HTTPException(status_code=404, detail="No matching dotbot found")
+    
+    _dotbots_move_raw(address=address, command=command)
 
+def _dotbots_move_raw(
+    address: str, command: DotBotMoveRawCommandModel
+):
     payload = PayloadCommandMoveRaw(
         left_x=command.left_x,
         left_y=command.left_y,
@@ -106,7 +111,6 @@ async def dotbots_move_raw(
     )
     api.controller.send_payload(int(address, 16), payload)
     api.controller.dotbots[address].move_raw = command
-
 
 @api.put(
     path="/controller/dotbots/{address}/{application}/rgb_led",
@@ -119,13 +123,15 @@ async def dotbots_rgb_led(
     """Set the current active DotBot."""
     if address not in api.controller.dotbots:
         raise HTTPException(status_code=404, detail="No matching dotbot found")
+    
+    _dotbots_rgb_led(address=address, command=command)
 
+def _dotbots_rgb_led(address: str, command: DotBotRgbLedCommandModel):
     payload = PayloadCommandRgbLed(
         red=command.red, green=command.green, blue=command.blue
     )
     api.controller.send_payload(int(address, 16), payload)
     api.controller.dotbots[address].rgb_led = command
-
 
 @api.put(
     path="/controller/dotbots/{address}/{application}/waypoints",
@@ -140,7 +146,14 @@ async def dotbots_waypoints(
     """Set the waypoints of a DotBot."""
     if address not in api.controller.dotbots:
         raise HTTPException(status_code=404, detail="No matching dotbot found")
+    
+    await _dotbots_waypoints(address=address, application=application, waypoints=waypoints)
 
+async def _dotbots_waypoints(
+    address: str,
+    application: int,
+    waypoints: DotBotWaypoints,
+):
     waypoints_list = waypoints.waypoints
     if application == ApplicationType.SailBot.value:
         if api.controller.dotbots[address].gps_position is not None:
@@ -181,7 +194,6 @@ async def dotbots_waypoints(
     await api.controller.notify_clients(
         DotBotNotificationModel(cmd=DotBotNotificationCommand.RELOAD)
     )
-
 
 @api.delete(
     path="/controller/dotbots/{address}/positions",
@@ -235,6 +247,39 @@ async def websocket_endpoint(websocket: WebSocket):
         if websocket in api.controller.websockets:
             api.controller.websockets.remove(websocket)
 
+@api.websocket("/controller/ws/dotbots")
+async def ws_dotbots(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        while True:
+            msg = await websocket.receive_json()
+
+            cmd = msg["cmd"]
+            address = msg["address"]
+            application = ApplicationType[msg["application"]]
+            data = msg["data"]
+
+            if address not in api.controller.dotbots:
+                continue
+
+            if cmd == "rgb_led":
+                command = DotBotRgbLedCommandModel(**data)
+                _dotbots_rgb_led(address=address, command=command)
+
+            elif cmd == "move_raw":
+                command = DotBotMoveRawCommandModel(**data)
+                _dotbots_move_raw(address=address, command=command)
+
+            elif cmd == "waypoints":
+                command = DotBotWaypoints(**data)
+                await _dotbots_waypoints(address=address, application=application, waypoints=command)
+
+            else:
+                # Unknown command → ignore or error
+                pass
+
+    except WebSocketDisconnect:
+        pass
 
 # Mount static files after all routes are defined
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend", "build")

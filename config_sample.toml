@@ -20,8 +20,10 @@ mqtt_use_tls = false
 # --- Runtime behavior ---
 webbrowser = true
 verbose = false
-log_level = "info"
+log_level = "error"
 log_output = "pydotbot.log"
 
 # --- Simulator ---
-simulator_init_state_path = "simulator_init_state.toml"
+simulator_init_state_path = "double_circle_128_bots.toml"
+# simulator_init_state_path = "grid_200_bots.toml"
+# simulator_init_state_path = "dotbot/examples/charging_station_init_state.toml"

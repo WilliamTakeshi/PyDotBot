@@ -9,6 +9,7 @@
 
 import asyncio
 import sys
+import cProfile
 
 import click
 import serial
@@ -183,4 +184,5 @@ def main(
 
 
 if __name__ == "__main__":
+    # cProfile.run("main()", sort="cumtime")
     main()  # pragma: nocover, pylint: disable=no-value-for-parameter

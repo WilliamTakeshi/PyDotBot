@@ -137,7 +137,6 @@ async def send_to_goal(
                     position=Vec2(x=bot.lh2_position.x, y=bot.lh2_position.y),
                     velocity=Vec2(x=0, y=0),
                     radius=BOT_RADIUS,
-                    direction=bot.direction,
                     max_speed=MAX_SPEED,
                     preferred_velocity=preferred_vel(
                         dotbot=bot, goal=goals.get(bot.address)
@@ -297,7 +296,7 @@ async def compute_orca_velocity(
 
 
 async def main() -> None:
-    params = OrcaParams(time_horizon=DT)
+    params = OrcaParams(time_horizon=DT, time_step=0.1*DT)
     url = os.getenv("DOTBOT_CONTROLLER_URL", "localhost")
     port = os.getenv("DOTBOT_CONTROLLER_PORT", "8000")
     use_https = os.getenv("DOTBOT_CONTROLLER_USE_HTTPS", False)

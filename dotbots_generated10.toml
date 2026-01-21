@@ -1,0 +1,69 @@
+# [[dotbots]]
+# address = "176D60D6E9A2319E"
+# calibrated = true
+# pos_x = 723083
+# pos_y = 483941
+# theta = 2.66361
+
+[[dotbots]]
+address = "345807603D2F3C2E"
+calibrated = true
+pos_x = 226260
+pos_y = 771222
+theta = 2.58417
+
+[[dotbots]]
+address = "45BCA7E03595AEC7"
+calibrated = true
+pos_x = 195652
+pos_y = 481396
+theta = 0.03297
+
+[[dotbots]]
+address = "84E04AEA5D93067B"
+calibrated = true
+pos_x = 499713
+pos_y = 996772
+theta = 1.72329
+
+[[dotbots]]
+address = "FE639E33AF691ADE"
+calibrated = true
+pos_x = 352556
+pos_y = 798798
+theta = 0.81471
+
+[[dotbots]]
+address = "9F8BC86DFF19368C"
+calibrated = true
+pos_x = 574567
+pos_y = 931625
+theta = 2.06088
+
+[[dotbots]]
+address = "1A1B05D5766643A3"
+calibrated = true
+pos_x = 629600
+pos_y = 417546
+theta = 1.25024
+
+[[dotbots]]
+address = "DE12342E81CFA016"
+calibrated = true
+pos_x = 101933
+pos_y = 126363
+theta = 0.56685
+
+[[dotbots]]
+address = "BE223C8F18918E12"
+calibrated = true
+pos_x = 146884
+pos_y = 528880
+theta = 2.74379
+
+[[dotbots]]
+address = "3D7B492BC7E955EB"
+calibrated = true
+pos_x = 409108
+pos_y = 885751
+theta = 0.51784

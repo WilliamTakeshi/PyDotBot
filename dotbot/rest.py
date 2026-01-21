@@ -13,6 +13,7 @@ import httpx
 from dotbot.logger import LOGGER, setup_logging
 from dotbot.models import DotBotModel, DotBotStatus
 from dotbot.protocol import ApplicationType
+import time
 
 
 @asynccontextmanager
@@ -33,7 +34,13 @@ class RestClient:
         self.https = https
         setup_logging(None, "info", ["console"])
         self._logger = LOGGER.bind(context=__name__)
-        self._client = httpx.AsyncClient()
+        self._client = httpx.AsyncClient(
+            limits=httpx.Limits(
+                max_connections=1000,
+                max_keepalive_connections=500,
+            ),
+            timeout=httpx.Timeout(5.0),
+        )
 
     @property
     def base_url(self):
@@ -70,7 +77,8 @@ class RestClient:
     async def _send_command(self, address, application, resource, command):
         try:
             response = await self._client.put(
-                f"{self.base_url}/dotbots" f"/{address}/{application.value}/{resource}",
+                f"{self.base_url}/dotbots"
+                f"/{address}/{application.value}/{resource}",
                 headers={
                     "Accept": "application/json",
                     "Content-Type": "application/json",

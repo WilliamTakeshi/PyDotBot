@@ -186,7 +186,7 @@ class DotBotSimulator(threading.Thread):
             "DotBot simulator update", x=self.pos_x, y=self.pos_y, theta=self.theta
         )
         self.time_elapsed_s += dt
-        time.sleep(dt)
+        # time.sleep(dt)
 
     def advertise(self):
         """Send an advertisement message to the gateway."""
@@ -235,8 +235,9 @@ class DotBotSimulator(threading.Thread):
 
     def run(self):
         """Update the state of the dotbot simulator."""
-        while self.running is True:
-            self.update(0.1)
+        pass
+        # while self.running is True:
+        #     self.update(0.1)
 
 
 class DotBotSimulatorCommunicationInterface(threading.Thread):
@@ -266,11 +267,16 @@ class DotBotSimulatorCommunicationInterface(threading.Thread):
         time.sleep(0.1)
 
         while self.running:
+            for _ in range(5):
+                for dotbot in self.dotbots:
+                    dotbot.update(0.1)
+                time.sleep(0.1)
+
             for dotbot in self.dotbots:
-                self.handle_dotbot_frame(dotbot.advertise())
-            time.sleep(
-                0.5 - PayloadDotBotAdvertisement().size * len(self.dotbots) * 0.000001
-            )
+                self.on_frame_received(dotbot.advertise())
+            # time.sleep(
+            #     0.5 - PayloadDotBotAdvertisement().size * len(self.dotbots) * 0.000001
+            # )
 
     def stop(self):
         self.logger.info("Stopping DotBot Simulation...")
