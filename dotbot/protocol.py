@@ -29,6 +29,7 @@ class PayloadType(IntEnum):
     CMD_XGO_ACTION = 0x0B
     LH2_PROCESSED_DATA = 0x0C
     LH2_CALIBRATION_HOMOGRAPHY = 0x0E
+    LH2_WAYPOINTS_TURN_GO = 0x0F
     RAW_DATA = 0x10
     DOTBOT_SIMULATOR_DATA = 0xFA
 
@@ -269,6 +270,22 @@ class PayloadLH2Waypoints(Payload):
     count: int = 0
     waypoints: list[PayloadLH2Location] = dataclasses.field(default_factory=lambda: [])
 
+@dataclass
+class PayloadLH2WaypointsTurnGo(Payload):
+    """Dataclass that holds a list of LH2 waypoints (Turn and Go algorithm)."""
+
+    metadata: list[PayloadFieldMetadata] = dataclasses.field(
+        default_factory=lambda: [
+            PayloadFieldMetadata(name="threshold", disp="thr."),
+            PayloadFieldMetadata(name="count", disp="len."),
+            PayloadFieldMetadata(name="waypoints", type_=list, length=0),
+        ]
+    )
+
+    threshold: int = 0
+    count: int = 0
+    waypoints: list[PayloadLH2Location] = dataclasses.field(default_factory=lambda: [])
+
 
 @dataclass
 class PayloadGPSWaypoints(Payload):
@@ -316,3 +333,4 @@ register_parser(PayloadType.LH2_WAYPOINTS, PayloadLH2Waypoints)
 register_parser(PayloadType.GPS_WAYPOINTS, PayloadGPSWaypoints)
 register_parser(PayloadType.RAW_DATA, PayloadRawData)
 register_parser(PayloadType.LH2_CALIBRATION_HOMOGRAPHY, PayloadLh2CalibrationHomography)
+register_parser(PayloadType.LH2_WAYPOINTS_TURN_GO, PayloadLH2WaypointsTurnGo)

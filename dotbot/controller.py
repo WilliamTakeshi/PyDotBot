@@ -74,6 +74,7 @@ from dotbot.protocol import (
     PayloadCommandXgoAction,
     PayloadGPSPosition,
     PayloadGPSWaypoints,
+    PayloadLH2WaypointsTurnGo,
     PayloadLh2CalibrationHomography,
     PayloadLH2Location,
     PayloadLH2Waypoints,
@@ -353,7 +354,7 @@ class Controller:
                 waypoints_list = [
                     self.dotbots[address].lh2_position
                 ] + command.waypoints
-            payload = PayloadLH2Waypoints(
+            payload = PayloadLH2WaypointsTurnGo(
                 threshold=command.threshold,
                 count=len(command.waypoints),
                 waypoints=[
