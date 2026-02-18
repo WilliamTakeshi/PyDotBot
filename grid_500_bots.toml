@@ -1,0 +1,3499 @@
+[[dotbots]]
+address = "AAAAAAAAAAAA0000"
+calibrated = true
+pos_x = 50
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0001"
+calibrated = true
+pos_x = 136
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0002"
+calibrated = true
+pos_x = 222
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0003"
+calibrated = true
+pos_x = 309
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0004"
+calibrated = true
+pos_x = 395
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0005"
+calibrated = true
+pos_x = 481
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0006"
+calibrated = true
+pos_x = 568
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0007"
+calibrated = true
+pos_x = 654
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0008"
+calibrated = true
+pos_x = 740
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0009"
+calibrated = true
+pos_x = 827
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000A"
+calibrated = true
+pos_x = 913
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000B"
+calibrated = true
+pos_x = 1000
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000C"
+calibrated = true
+pos_x = 1086
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000D"
+calibrated = true
+pos_x = 1172
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000E"
+calibrated = true
+pos_x = 1259
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA000F"
+calibrated = true
+pos_x = 1345
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0010"
+calibrated = true
+pos_x = 1431
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0011"
+calibrated = true
+pos_x = 1518
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0012"
+calibrated = true
+pos_x = 1604
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0013"
+calibrated = true
+pos_x = 1690
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0014"
+calibrated = true
+pos_x = 1777
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0015"
+calibrated = true
+pos_x = 1863
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0016"
+calibrated = true
+pos_x = 1950
+pos_y = 50
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0017"
+calibrated = true
+pos_x = 50
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0018"
+calibrated = true
+pos_x = 136
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0019"
+calibrated = true
+pos_x = 222
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA001A"
+calibrated = true
+pos_x = 309
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA001B"
+calibrated = true
+pos_x = 395
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA001C"
+calibrated = true
+pos_x = 481
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA001D"
+calibrated = true
+pos_x = 568
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA001E"
+calibrated = true
+pos_x = 654
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA001F"
+calibrated = true
+pos_x = 740
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0020"
+calibrated = true
+pos_x = 827
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0021"
+calibrated = true
+pos_x = 913
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0022"
+calibrated = true
+pos_x = 1000
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0023"
+calibrated = true
+pos_x = 1086
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0024"
+calibrated = true
+pos_x = 1172
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0025"
+calibrated = true
+pos_x = 1259
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0026"
+calibrated = true
+pos_x = 1345
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0027"
+calibrated = true
+pos_x = 1431
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0028"
+calibrated = true
+pos_x = 1518
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0029"
+calibrated = true
+pos_x = 1604
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA002A"
+calibrated = true
+pos_x = 1690
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA002B"
+calibrated = true
+pos_x = 1777
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA002C"
+calibrated = true
+pos_x = 1863
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA002D"
+calibrated = true
+pos_x = 1950
+pos_y = 140
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA002E"
+calibrated = true
+pos_x = 50
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA002F"
+calibrated = true
+pos_x = 136
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0030"
+calibrated = true
+pos_x = 222
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0031"
+calibrated = true
+pos_x = 309
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0032"
+calibrated = true
+pos_x = 395
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0033"
+calibrated = true
+pos_x = 481
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0034"
+calibrated = true
+pos_x = 568
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0035"
+calibrated = true
+pos_x = 654
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0036"
+calibrated = true
+pos_x = 740
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0037"
+calibrated = true
+pos_x = 827
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0038"
+calibrated = true
+pos_x = 913
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0039"
+calibrated = true
+pos_x = 1000
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA003A"
+calibrated = true
+pos_x = 1086
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA003B"
+calibrated = true
+pos_x = 1172
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA003C"
+calibrated = true
+pos_x = 1259
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA003D"
+calibrated = true
+pos_x = 1345
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA003E"
+calibrated = true
+pos_x = 1431
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA003F"
+calibrated = true
+pos_x = 1518
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0040"
+calibrated = true
+pos_x = 1604
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0041"
+calibrated = true
+pos_x = 1690
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0042"
+calibrated = true
+pos_x = 1777
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0043"
+calibrated = true
+pos_x = 1863
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0044"
+calibrated = true
+pos_x = 1950
+pos_y = 230
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0045"
+calibrated = true
+pos_x = 50
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0046"
+calibrated = true
+pos_x = 136
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0047"
+calibrated = true
+pos_x = 222
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0048"
+calibrated = true
+pos_x = 309
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0049"
+calibrated = true
+pos_x = 395
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA004A"
+calibrated = true
+pos_x = 481
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA004B"
+calibrated = true
+pos_x = 568
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA004C"
+calibrated = true
+pos_x = 654
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA004D"
+calibrated = true
+pos_x = 740
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA004E"
+calibrated = true
+pos_x = 827
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA004F"
+calibrated = true
+pos_x = 913
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0050"
+calibrated = true
+pos_x = 1000
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0051"
+calibrated = true
+pos_x = 1086
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0052"
+calibrated = true
+pos_x = 1172
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0053"
+calibrated = true
+pos_x = 1259
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0054"
+calibrated = true
+pos_x = 1345
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0055"
+calibrated = true
+pos_x = 1431
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0056"
+calibrated = true
+pos_x = 1518
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0057"
+calibrated = true
+pos_x = 1604
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0058"
+calibrated = true
+pos_x = 1690
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0059"
+calibrated = true
+pos_x = 1777
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA005A"
+calibrated = true
+pos_x = 1863
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA005B"
+calibrated = true
+pos_x = 1950
+pos_y = 321
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA005C"
+calibrated = true
+pos_x = 50
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA005D"
+calibrated = true
+pos_x = 136
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA005E"
+calibrated = true
+pos_x = 222
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA005F"
+calibrated = true
+pos_x = 309
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0060"
+calibrated = true
+pos_x = 395
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0061"
+calibrated = true
+pos_x = 481
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0062"
+calibrated = true
+pos_x = 568
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0063"
+calibrated = true
+pos_x = 654
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0064"
+calibrated = true
+pos_x = 740
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0065"
+calibrated = true
+pos_x = 827
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0066"
+calibrated = true
+pos_x = 913
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0067"
+calibrated = true
+pos_x = 1000
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0068"
+calibrated = true
+pos_x = 1086
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0069"
+calibrated = true
+pos_x = 1172
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA006A"
+calibrated = true
+pos_x = 1259
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA006B"
+calibrated = true
+pos_x = 1345
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA006C"
+calibrated = true
+pos_x = 1431
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA006D"
+calibrated = true
+pos_x = 1518
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA006E"
+calibrated = true
+pos_x = 1604
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA006F"
+calibrated = true
+pos_x = 1690
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0070"
+calibrated = true
+pos_x = 1777
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0071"
+calibrated = true
+pos_x = 1863
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0072"
+calibrated = true
+pos_x = 1950
+pos_y = 411
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0073"
+calibrated = true
+pos_x = 50
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0074"
+calibrated = true
+pos_x = 136
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0075"
+calibrated = true
+pos_x = 222
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0076"
+calibrated = true
+pos_x = 309
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0077"
+calibrated = true
+pos_x = 395
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0078"
+calibrated = true
+pos_x = 481
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0079"
+calibrated = true
+pos_x = 568
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA007A"
+calibrated = true
+pos_x = 654
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA007B"
+calibrated = true
+pos_x = 740
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA007C"
+calibrated = true
+pos_x = 827
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA007D"
+calibrated = true
+pos_x = 913
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA007E"
+calibrated = true
+pos_x = 1000
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA007F"
+calibrated = true
+pos_x = 1086
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0080"
+calibrated = true
+pos_x = 1172
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0081"
+calibrated = true
+pos_x = 1259
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0082"
+calibrated = true
+pos_x = 1345
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0083"
+calibrated = true
+pos_x = 1431
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0084"
+calibrated = true
+pos_x = 1518
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0085"
+calibrated = true
+pos_x = 1604
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0086"
+calibrated = true
+pos_x = 1690
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0087"
+calibrated = true
+pos_x = 1777
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0088"
+calibrated = true
+pos_x = 1863
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0089"
+calibrated = true
+pos_x = 1950
+pos_y = 502
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA008A"
+calibrated = true
+pos_x = 50
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA008B"
+calibrated = true
+pos_x = 136
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA008C"
+calibrated = true
+pos_x = 222
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA008D"
+calibrated = true
+pos_x = 309
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA008E"
+calibrated = true
+pos_x = 395
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA008F"
+calibrated = true
+pos_x = 481
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0090"
+calibrated = true
+pos_x = 568
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0091"
+calibrated = true
+pos_x = 654
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0092"
+calibrated = true
+pos_x = 740
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0093"
+calibrated = true
+pos_x = 827
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0094"
+calibrated = true
+pos_x = 913
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0095"
+calibrated = true
+pos_x = 1000
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0096"
+calibrated = true
+pos_x = 1086
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0097"
+calibrated = true
+pos_x = 1172
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0098"
+calibrated = true
+pos_x = 1259
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0099"
+calibrated = true
+pos_x = 1345
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA009A"
+calibrated = true
+pos_x = 1431
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA009B"
+calibrated = true
+pos_x = 1518
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA009C"
+calibrated = true
+pos_x = 1604
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA009D"
+calibrated = true
+pos_x = 1690
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA009E"
+calibrated = true
+pos_x = 1777
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA009F"
+calibrated = true
+pos_x = 1863
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A0"
+calibrated = true
+pos_x = 1950
+pos_y = 592
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A1"
+calibrated = true
+pos_x = 50
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A2"
+calibrated = true
+pos_x = 136
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A3"
+calibrated = true
+pos_x = 222
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A4"
+calibrated = true
+pos_x = 309
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A5"
+calibrated = true
+pos_x = 395
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A6"
+calibrated = true
+pos_x = 481
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A7"
+calibrated = true
+pos_x = 568
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A8"
+calibrated = true
+pos_x = 654
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00A9"
+calibrated = true
+pos_x = 740
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00AA"
+calibrated = true
+pos_x = 827
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00AB"
+calibrated = true
+pos_x = 913
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00AC"
+calibrated = true
+pos_x = 1000
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00AD"
+calibrated = true
+pos_x = 1086
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00AE"
+calibrated = true
+pos_x = 1172
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00AF"
+calibrated = true
+pos_x = 1259
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B0"
+calibrated = true
+pos_x = 1345
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B1"
+calibrated = true
+pos_x = 1431
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B2"
+calibrated = true
+pos_x = 1518
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B3"
+calibrated = true
+pos_x = 1604
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B4"
+calibrated = true
+pos_x = 1690
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B5"
+calibrated = true
+pos_x = 1777
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B6"
+calibrated = true
+pos_x = 1863
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B7"
+calibrated = true
+pos_x = 1950
+pos_y = 683
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B8"
+calibrated = true
+pos_x = 50
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00B9"
+calibrated = true
+pos_x = 136
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00BA"
+calibrated = true
+pos_x = 222
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00BB"
+calibrated = true
+pos_x = 309
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00BC"
+calibrated = true
+pos_x = 395
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00BD"
+calibrated = true
+pos_x = 481
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00BE"
+calibrated = true
+pos_x = 568
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00BF"
+calibrated = true
+pos_x = 654
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C0"
+calibrated = true
+pos_x = 740
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C1"
+calibrated = true
+pos_x = 827
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C2"
+calibrated = true
+pos_x = 913
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C3"
+calibrated = true
+pos_x = 1000
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C4"
+calibrated = true
+pos_x = 1086
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C5"
+calibrated = true
+pos_x = 1172
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C6"
+calibrated = true
+pos_x = 1259
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C7"
+calibrated = true
+pos_x = 1345
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C8"
+calibrated = true
+pos_x = 1431
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00C9"
+calibrated = true
+pos_x = 1518
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00CA"
+calibrated = true
+pos_x = 1604
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00CB"
+calibrated = true
+pos_x = 1690
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00CC"
+calibrated = true
+pos_x = 1777
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00CD"
+calibrated = true
+pos_x = 1863
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00CE"
+calibrated = true
+pos_x = 1950
+pos_y = 773
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00CF"
+calibrated = true
+pos_x = 50
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D0"
+calibrated = true
+pos_x = 136
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D1"
+calibrated = true
+pos_x = 222
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D2"
+calibrated = true
+pos_x = 309
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D3"
+calibrated = true
+pos_x = 395
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D4"
+calibrated = true
+pos_x = 481
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D5"
+calibrated = true
+pos_x = 568
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D6"
+calibrated = true
+pos_x = 654
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D7"
+calibrated = true
+pos_x = 740
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D8"
+calibrated = true
+pos_x = 827
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00D9"
+calibrated = true
+pos_x = 913
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00DA"
+calibrated = true
+pos_x = 1000
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00DB"
+calibrated = true
+pos_x = 1086
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00DC"
+calibrated = true
+pos_x = 1172
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00DD"
+calibrated = true
+pos_x = 1259
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00DE"
+calibrated = true
+pos_x = 1345
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00DF"
+calibrated = true
+pos_x = 1431
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E0"
+calibrated = true
+pos_x = 1518
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E1"
+calibrated = true
+pos_x = 1604
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E2"
+calibrated = true
+pos_x = 1690
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E3"
+calibrated = true
+pos_x = 1777
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E4"
+calibrated = true
+pos_x = 1863
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E5"
+calibrated = true
+pos_x = 1950
+pos_y = 864
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E6"
+calibrated = true
+pos_x = 50
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E7"
+calibrated = true
+pos_x = 136
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E8"
+calibrated = true
+pos_x = 222
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00E9"
+calibrated = true
+pos_x = 309
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00EA"
+calibrated = true
+pos_x = 395
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00EB"
+calibrated = true
+pos_x = 481
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00EC"
+calibrated = true
+pos_x = 568
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00ED"
+calibrated = true
+pos_x = 654
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00EE"
+calibrated = true
+pos_x = 740
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00EF"
+calibrated = true
+pos_x = 827
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F0"
+calibrated = true
+pos_x = 913
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F1"
+calibrated = true
+pos_x = 1000
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F2"
+calibrated = true
+pos_x = 1086
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F3"
+calibrated = true
+pos_x = 1172
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F4"
+calibrated = true
+pos_x = 1259
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F5"
+calibrated = true
+pos_x = 1345
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F6"
+calibrated = true
+pos_x = 1431
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F7"
+calibrated = true
+pos_x = 1518
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F8"
+calibrated = true
+pos_x = 1604
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00F9"
+calibrated = true
+pos_x = 1690
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00FA"
+calibrated = true
+pos_x = 1777
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00FB"
+calibrated = true
+pos_x = 1863
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00FC"
+calibrated = true
+pos_x = 1950
+pos_y = 954
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00FD"
+calibrated = true
+pos_x = 50
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00FE"
+calibrated = true
+pos_x = 136
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA00FF"
+calibrated = true
+pos_x = 222
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0100"
+calibrated = true
+pos_x = 309
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0101"
+calibrated = true
+pos_x = 395
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0102"
+calibrated = true
+pos_x = 481
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0103"
+calibrated = true
+pos_x = 568
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0104"
+calibrated = true
+pos_x = 654
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0105"
+calibrated = true
+pos_x = 740
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0106"
+calibrated = true
+pos_x = 827
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0107"
+calibrated = true
+pos_x = 913
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0108"
+calibrated = true
+pos_x = 1000
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0109"
+calibrated = true
+pos_x = 1086
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA010A"
+calibrated = true
+pos_x = 1172
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA010B"
+calibrated = true
+pos_x = 1259
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA010C"
+calibrated = true
+pos_x = 1345
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA010D"
+calibrated = true
+pos_x = 1431
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA010E"
+calibrated = true
+pos_x = 1518
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA010F"
+calibrated = true
+pos_x = 1604
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0110"
+calibrated = true
+pos_x = 1690
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0111"
+calibrated = true
+pos_x = 1777
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0112"
+calibrated = true
+pos_x = 1863
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0113"
+calibrated = true
+pos_x = 1950
+pos_y = 1045
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0114"
+calibrated = true
+pos_x = 50
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0115"
+calibrated = true
+pos_x = 136
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0116"
+calibrated = true
+pos_x = 222
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0117"
+calibrated = true
+pos_x = 309
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0118"
+calibrated = true
+pos_x = 395
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0119"
+calibrated = true
+pos_x = 481
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA011A"
+calibrated = true
+pos_x = 568
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA011B"
+calibrated = true
+pos_x = 654
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA011C"
+calibrated = true
+pos_x = 740
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA011D"
+calibrated = true
+pos_x = 827
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA011E"
+calibrated = true
+pos_x = 913
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA011F"
+calibrated = true
+pos_x = 1000
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0120"
+calibrated = true
+pos_x = 1086
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0121"
+calibrated = true
+pos_x = 1172
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0122"
+calibrated = true
+pos_x = 1259
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0123"
+calibrated = true
+pos_x = 1345
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0124"
+calibrated = true
+pos_x = 1431
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0125"
+calibrated = true
+pos_x = 1518
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0126"
+calibrated = true
+pos_x = 1604
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0127"
+calibrated = true
+pos_x = 1690
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0128"
+calibrated = true
+pos_x = 1777
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0129"
+calibrated = true
+pos_x = 1863
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA012A"
+calibrated = true
+pos_x = 1950
+pos_y = 1135
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA012B"
+calibrated = true
+pos_x = 50
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA012C"
+calibrated = true
+pos_x = 136
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA012D"
+calibrated = true
+pos_x = 222
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA012E"
+calibrated = true
+pos_x = 309
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA012F"
+calibrated = true
+pos_x = 395
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0130"
+calibrated = true
+pos_x = 481
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0131"
+calibrated = true
+pos_x = 568
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0132"
+calibrated = true
+pos_x = 654
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0133"
+calibrated = true
+pos_x = 740
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0134"
+calibrated = true
+pos_x = 827
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0135"
+calibrated = true
+pos_x = 913
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0136"
+calibrated = true
+pos_x = 1000
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0137"
+calibrated = true
+pos_x = 1086
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0138"
+calibrated = true
+pos_x = 1172
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0139"
+calibrated = true
+pos_x = 1259
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA013A"
+calibrated = true
+pos_x = 1345
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA013B"
+calibrated = true
+pos_x = 1431
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA013C"
+calibrated = true
+pos_x = 1518
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA013D"
+calibrated = true
+pos_x = 1604
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA013E"
+calibrated = true
+pos_x = 1690
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA013F"
+calibrated = true
+pos_x = 1777
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0140"
+calibrated = true
+pos_x = 1863
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0141"
+calibrated = true
+pos_x = 1950
+pos_y = 1226
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0142"
+calibrated = true
+pos_x = 50
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0143"
+calibrated = true
+pos_x = 136
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0144"
+calibrated = true
+pos_x = 222
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0145"
+calibrated = true
+pos_x = 309
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0146"
+calibrated = true
+pos_x = 395
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0147"
+calibrated = true
+pos_x = 481
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0148"
+calibrated = true
+pos_x = 568
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0149"
+calibrated = true
+pos_x = 654
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA014A"
+calibrated = true
+pos_x = 740
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA014B"
+calibrated = true
+pos_x = 827
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA014C"
+calibrated = true
+pos_x = 913
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA014D"
+calibrated = true
+pos_x = 1000
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA014E"
+calibrated = true
+pos_x = 1086
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA014F"
+calibrated = true
+pos_x = 1172
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0150"
+calibrated = true
+pos_x = 1259
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0151"
+calibrated = true
+pos_x = 1345
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0152"
+calibrated = true
+pos_x = 1431
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0153"
+calibrated = true
+pos_x = 1518
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0154"
+calibrated = true
+pos_x = 1604
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0155"
+calibrated = true
+pos_x = 1690
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0156"
+calibrated = true
+pos_x = 1777
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0157"
+calibrated = true
+pos_x = 1863
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0158"
+calibrated = true
+pos_x = 1950
+pos_y = 1316
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0159"
+calibrated = true
+pos_x = 50
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA015A"
+calibrated = true
+pos_x = 136
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA015B"
+calibrated = true
+pos_x = 222
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA015C"
+calibrated = true
+pos_x = 309
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA015D"
+calibrated = true
+pos_x = 395
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA015E"
+calibrated = true
+pos_x = 481
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA015F"
+calibrated = true
+pos_x = 568
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0160"
+calibrated = true
+pos_x = 654
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0161"
+calibrated = true
+pos_x = 740
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0162"
+calibrated = true
+pos_x = 827
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0163"
+calibrated = true
+pos_x = 913
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0164"
+calibrated = true
+pos_x = 1000
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0165"
+calibrated = true
+pos_x = 1086
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0166"
+calibrated = true
+pos_x = 1172
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0167"
+calibrated = true
+pos_x = 1259
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0168"
+calibrated = true
+pos_x = 1345
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0169"
+calibrated = true
+pos_x = 1431
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA016A"
+calibrated = true
+pos_x = 1518
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA016B"
+calibrated = true
+pos_x = 1604
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA016C"
+calibrated = true
+pos_x = 1690
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA016D"
+calibrated = true
+pos_x = 1777
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA016E"
+calibrated = true
+pos_x = 1863
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA016F"
+calibrated = true
+pos_x = 1950
+pos_y = 1407
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0170"
+calibrated = true
+pos_x = 50
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0171"
+calibrated = true
+pos_x = 136
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0172"
+calibrated = true
+pos_x = 222
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0173"
+calibrated = true
+pos_x = 309
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0174"
+calibrated = true
+pos_x = 395
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0175"
+calibrated = true
+pos_x = 481
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0176"
+calibrated = true
+pos_x = 568
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0177"
+calibrated = true
+pos_x = 654
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0178"
+calibrated = true
+pos_x = 740
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0179"
+calibrated = true
+pos_x = 827
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA017A"
+calibrated = true
+pos_x = 913
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA017B"
+calibrated = true
+pos_x = 1000
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA017C"
+calibrated = true
+pos_x = 1086
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA017D"
+calibrated = true
+pos_x = 1172
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA017E"
+calibrated = true
+pos_x = 1259
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA017F"
+calibrated = true
+pos_x = 1345
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0180"
+calibrated = true
+pos_x = 1431
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0181"
+calibrated = true
+pos_x = 1518
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0182"
+calibrated = true
+pos_x = 1604
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0183"
+calibrated = true
+pos_x = 1690
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0184"
+calibrated = true
+pos_x = 1777
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0185"
+calibrated = true
+pos_x = 1863
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0186"
+calibrated = true
+pos_x = 1950
+pos_y = 1497
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0187"
+calibrated = true
+pos_x = 50
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0188"
+calibrated = true
+pos_x = 136
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0189"
+calibrated = true
+pos_x = 222
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA018A"
+calibrated = true
+pos_x = 309
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA018B"
+calibrated = true
+pos_x = 395
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA018C"
+calibrated = true
+pos_x = 481
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA018D"
+calibrated = true
+pos_x = 568
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA018E"
+calibrated = true
+pos_x = 654
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA018F"
+calibrated = true
+pos_x = 740
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0190"
+calibrated = true
+pos_x = 827
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0191"
+calibrated = true
+pos_x = 913
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0192"
+calibrated = true
+pos_x = 1000
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0193"
+calibrated = true
+pos_x = 1086
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0194"
+calibrated = true
+pos_x = 1172
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0195"
+calibrated = true
+pos_x = 1259
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0196"
+calibrated = true
+pos_x = 1345
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0197"
+calibrated = true
+pos_x = 1431
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0198"
+calibrated = true
+pos_x = 1518
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA0199"
+calibrated = true
+pos_x = 1604
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA019A"
+calibrated = true
+pos_x = 1690
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA019B"
+calibrated = true
+pos_x = 1777
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA019C"
+calibrated = true
+pos_x = 1863
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA019D"
+calibrated = true
+pos_x = 1950
+pos_y = 1588
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA019E"
+calibrated = true
+pos_x = 50
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA019F"
+calibrated = true
+pos_x = 136
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A0"
+calibrated = true
+pos_x = 222
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A1"
+calibrated = true
+pos_x = 309
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A2"
+calibrated = true
+pos_x = 395
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A3"
+calibrated = true
+pos_x = 481
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A4"
+calibrated = true
+pos_x = 568
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A5"
+calibrated = true
+pos_x = 654
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A6"
+calibrated = true
+pos_x = 740
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A7"
+calibrated = true
+pos_x = 827
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A8"
+calibrated = true
+pos_x = 913
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01A9"
+calibrated = true
+pos_x = 1000
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01AA"
+calibrated = true
+pos_x = 1086
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01AB"
+calibrated = true
+pos_x = 1172
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01AC"
+calibrated = true
+pos_x = 1259
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01AD"
+calibrated = true
+pos_x = 1345
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01AE"
+calibrated = true
+pos_x = 1431
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01AF"
+calibrated = true
+pos_x = 1518
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B0"
+calibrated = true
+pos_x = 1604
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B1"
+calibrated = true
+pos_x = 1690
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B2"
+calibrated = true
+pos_x = 1777
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B3"
+calibrated = true
+pos_x = 1863
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B4"
+calibrated = true
+pos_x = 1950
+pos_y = 1678
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B5"
+calibrated = true
+pos_x = 50
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B6"
+calibrated = true
+pos_x = 136
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B7"
+calibrated = true
+pos_x = 222
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B8"
+calibrated = true
+pos_x = 309
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01B9"
+calibrated = true
+pos_x = 395
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01BA"
+calibrated = true
+pos_x = 481
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01BB"
+calibrated = true
+pos_x = 568
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01BC"
+calibrated = true
+pos_x = 654
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01BD"
+calibrated = true
+pos_x = 740
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01BE"
+calibrated = true
+pos_x = 827
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01BF"
+calibrated = true
+pos_x = 913
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C0"
+calibrated = true
+pos_x = 1000
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C1"
+calibrated = true
+pos_x = 1086
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C2"
+calibrated = true
+pos_x = 1172
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C3"
+calibrated = true
+pos_x = 1259
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C4"
+calibrated = true
+pos_x = 1345
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C5"
+calibrated = true
+pos_x = 1431
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C6"
+calibrated = true
+pos_x = 1518
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C7"
+calibrated = true
+pos_x = 1604
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C8"
+calibrated = true
+pos_x = 1690
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01C9"
+calibrated = true
+pos_x = 1777
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01CA"
+calibrated = true
+pos_x = 1863
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01CB"
+calibrated = true
+pos_x = 1950
+pos_y = 1769
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01CC"
+calibrated = true
+pos_x = 50
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01CD"
+calibrated = true
+pos_x = 136
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01CE"
+calibrated = true
+pos_x = 222
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01CF"
+calibrated = true
+pos_x = 309
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D0"
+calibrated = true
+pos_x = 395
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D1"
+calibrated = true
+pos_x = 481
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D2"
+calibrated = true
+pos_x = 568
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D3"
+calibrated = true
+pos_x = 654
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D4"
+calibrated = true
+pos_x = 740
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D5"
+calibrated = true
+pos_x = 827
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D6"
+calibrated = true
+pos_x = 913
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D7"
+calibrated = true
+pos_x = 1000
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D8"
+calibrated = true
+pos_x = 1086
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01D9"
+calibrated = true
+pos_x = 1172
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01DA"
+calibrated = true
+pos_x = 1259
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01DB"
+calibrated = true
+pos_x = 1345
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01DC"
+calibrated = true
+pos_x = 1431
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01DD"
+calibrated = true
+pos_x = 1518
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01DE"
+calibrated = true
+pos_x = 1604
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01DF"
+calibrated = true
+pos_x = 1690
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E0"
+calibrated = true
+pos_x = 1777
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E1"
+calibrated = true
+pos_x = 1863
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E2"
+calibrated = true
+pos_x = 1950
+pos_y = 1859
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E3"
+calibrated = true
+pos_x = 50
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E4"
+calibrated = true
+pos_x = 136
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E5"
+calibrated = true
+pos_x = 222
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E6"
+calibrated = true
+pos_x = 309
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E7"
+calibrated = true
+pos_x = 395
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E8"
+calibrated = true
+pos_x = 481
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01E9"
+calibrated = true
+pos_x = 568
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01EA"
+calibrated = true
+pos_x = 654
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01EB"
+calibrated = true
+pos_x = 740
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01EC"
+calibrated = true
+pos_x = 827
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01ED"
+calibrated = true
+pos_x = 913
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01EE"
+calibrated = true
+pos_x = 1000
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01EF"
+calibrated = true
+pos_x = 1086
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01F0"
+calibrated = true
+pos_x = 1172
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01F1"
+calibrated = true
+pos_x = 1259
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01F2"
+calibrated = true
+pos_x = 1345
+pos_y = 1950
+theta = 0.0
+
+[[dotbots]]
+address = "AAAAAAAAAAAA01F3"
+calibrated = true
+pos_x = 1431
+pos_y = 1950
+theta = 0.0
